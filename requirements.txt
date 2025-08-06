@@ -1,0 +1,31 @@
+# Core
+langchain
+langchain-core
+langchain-community
+langchain-groq
+langchain-huggingface
+
+# Embeddings
+sentence-transformers
+huggingface-hub
+transformers
+torch
+scikit-learn
+scipy
+
+# Vector store
+faiss-cpu
+
+# OCR + PDF
+pytesseract
+pdf2image
+PyMuPDF
+pypdf
+Pillow
+
+# Web UI
+streamlit
+python-dotenv
+
+# Optional
+tiktoken

@@ -1,0 +1,4976 @@
+
+--- Page 1 ---
+Machine Learning I: Foundations
+
+By: Prof. Marius Kloft
+
+
+
+--- Page 2 ---
+
+
+--- Page 3 ---
+Contents
+
+Contents
+
+About the lecturer
+Requirements
+Objectives of the textbook
+
+Credits
+
+1
+
+1.1
+1.2
+1.3
+1.4
+1.5
+1.6
+1.7
+1.8
+
+2
+
+2.1
+2.2
+2.3
+2.4
+
+3
+
+3.1
+3.2
+3.3
+3.4
+3.9
+3.6
+
+A
+
+4.1
+4.2
+4.3
+
+5
+
+5.1
+5.2
+5.3
+5.4
+5.9
+5.6
+
+Mathematical Notation & Basics
+Notation
+
+Scalar Projection
+
+Hyperplanes
+
+Eigenvalues
+
+Positive Definite Matrices
+
+Gradient
+
+Hessian Matrix
+
+Exercises
+
+Linear Classifiers & SVM
+Formal Setting
+
+Linear Classifier
+
+Support Vector Machine (SVM)
+Exercises
+
+Convex Optimization -
+
+The Gradient Descent Algorithm
+Convex Functions
+
+Convex Optimization Problems
+Making the SVM Convex
+
+Solving Convex Optimization Problems
+
+Applying Gradient Descent on the Convex SVM
+
+Exercises
+
+Kernel SVM
+
+Kernel Methods
+
+Applying the Kernel Trick to the SVM
+Exercises
+
+Neural Networks
+
+The Brain Graph
+
+Artifical Neural Networks (ANN)
+Feed-Forward ANN
+
+Training ANN
+
+Convolutional Neural Networks (CNN)
+CNN Architecture
+
+DDD Oo
+
+wo onn
+
+11
+12
+12
+13
+
+15
+15
+16
+17
+20
+
+23
+23
+24
+25
+27
+29
+dl
+
+33
+33
+36
+39
+
+Al
+Al
+42
+43
+45
+AT
+48
+
+
+--- Page 4 ---
+Contents
+
+5.7 Deep Learning
+
+5.8 Exercises
+
+6 Overfitting & Regularization
+6.1 Overfitting & Underfitting
+
+6.2 Unifying Loss View
+
+6.3 Regularization
+
+6.4 Regularization in Deep Learning
+6.5 Exercises
+
+7 Regression
+
+7.1 Linear Regression
+
+7.2 Leave-one-out cross-validation (LOOCV)
+7.3 Non-Linear Regression
+
+7.4 Unifying View
+
+7.5 Exercises
+
+8 Clustering
+
+8.1 Linear Clustering
+
+8.2 K-means
+
+8.3 Non-Linear Clustering
+
+8.4 Hierarchical Clustering
+
+8.5 Exercises
+
+9 Dimensionality Reduction
+9.1 Linear Dimensionality Reduction
+9.2 Kernel PCA
+
+9.3 Autoencoders
+
+9.4 Exercises
+
+10 Decision Trees & Random Forests
+10.1 Decision ‘Trees
+
+10.2 Random Forests
+
+Bibliography
+
+Index
+
+50
+51
+
+53
+53
+54
+56
+57
+60
+
+61
+61
+63
+66
+69
+69
+
+71
+71
+72
+75
+77
+79
+
+81
+81
+84
+89
+87
+
+89
+89
+93
+
+95
+96
+
+
+--- Page 5 ---
+Contents
+
+About the Lecturer
+Prof. Dr. Marius Kloft
+
+Bio
+Since 2017, Marius Kloft has been a professor of computer science at TU Kais-
+erslautern, Germany. Previously, he was an adjunct faculty member of the Uni-
+versity of Southern California (09/2018-03/2019), an assistant professor at HU
+Berlin (2014-2017), and a joint postdoctoral fellow (2012-2014) at the Cour-
+ant Institute of Mathematical Sciences and Memorial Sloan-Kettering Cancer
+
+Center, New York, working with Mehryar Mohri, Corinna Cortes, and Gunnar
+Ratsch.
+
+From 2007-2011, he was a PhD student in the machine learning program of TU
+Berlin, headed by Klaus-Robert Miiller. He was co-advised by Gilles Blanchard
+and Peter L. Bartlett, whose learning theory group at UC Berkeley he visited
+from 10/2009 to 10/2010. In 2006, he received a Master’ degree in mathem-
+atics from the University of Marburg, Germany, with a thesis on algebraic
+geometry.
+
+Research Interests
+
+Marius Kloft is interested in theory and algorithms of statistical machine learn-
+ing and its applications, especially in statistical genetics, mechanical engineer-
+ing, and chemical process engineering. He has been working on, e.g., multiple
+kernel learning, transfer learning, anomaly detection, extreme classification,
+and adversarial learning. He co-organized workshops on these topics at NIPS
+2010, 2013, 2014, 2017, ICML 2016, and Dagstuhl 2018.
+
+His dissertation on Lp-norm multiple kernel learning was nominated by TU
+Berlin for the Doctoral Dissertation Award of the German Chapter of the ACM
+(GI). He has received the Google Most Influential Papers Award and the DFG
+Emmy-Noether Career Award.
+
+
+--- Page 6 ---
+Contents
+
+Requirements
+
+This course requires a solid foundation in linear algebra and calculus at uni-
+versity level. For guidance on how to brush up on your math for this course,
+we have set up a frequently updated page that links to various excellent re-
+sources!. The lecture will be accompanied by theoretical and programming
+exercises. The theory exercises can be solved using the concepts introduced
+in the lecture, but the programming exercises require basic familiarity with
+Python. If you are unsure about your Python knowledge, you may want to
+have a look at the Google Python tutorial’, for example. In Section 1, we will
+briefly go through the basics of mathematics needed for machine learning.
+
+Objectives of the textbook
+After attending this lecture, you should be able to
+
+e understand the aim of machine learning;
+
+e know general machine learning algorithms;
+
+understand how to apply a specific model to a specific problem;
+
+understand the theoretical background needed for machine learning;
+
+e implement solutions to ML problems both on a high level using popular
+ML frameworks and on a low level using only linear algebra subroutines.
+
+Credits
+Credits go out to the following people, that helped create the script:
+
+e Prof. Marius Kloft for proofreading and supporting the slides and lecture
+videos that helped create the script.
+
+e Geri Gokaj for converting the slides and lecture videos into this script.
+
+Billy Joe Franks for proofreading the script and writing the CNN part.
+
+Tobias Michels for proofreading the script and being a AT RXwizard.
+
+The students of the 2021 ML1 course for finding typos and mistakes.
+
+' https://ml.cs.uni-kl.de/guide.html
+? https: //developers.google.com/edu/python
+
+
+--- Page 7 ---
+Mathematical Notation & Basics
+
+1
+
+Mathematical Notation & Basics
+
+In this chapter, we will introduce some basic mathematical concepts and the
+
+notation we will use in this course. Machine learning requires solid mathem-
+
+atical knowledge in linear algebra and multivariate analysis.
+
+1.1 Notation
+
+In this section, we will fix the notation that we will use throughout the course.
+
+We denote vectors v € R? by bold letters and scalars s € R by regular
+letters:
+U1
+v= : . (1.1.1)
+Ud
+We denote matrices A € R™*" by capital letters:
+
+Q41 a42 =...» Ain
+a21 a22 =... Qan
+
+A=] | ; (1.1.2)
+Qm1 GAm2 +++» Amn
+
+We define 0 (resp. 1) as the vector full of zeros (resp. full of ones) with
+appropriate dimension to the context:
+
+0 := ee Dy, (1.1.3)
+
+We denote by J the identity matrix with appropriate dimension to the
+context:
+10... 0
+O 1... 0
+I=]. . (1.1.4)
+0 0 1
+
+If v € R¢, then we define v' € R'@ as its transpose:
+
+Vi
+v= : , v' :=(u1,...,va )- (1.1.5)
+
+Vd
+
+
+--- Page 8 ---
+Mathematical Notation & Basics
+
+scalar pro-
+jection
+
+projection of v onto w is defined as Ily(v) :
+
+If A € R™*", then we define A' € R"™ as its transpose:
+
+Qi Q42  «...» Ain Q4, Qa, ...- Ami
+21 a92  ... QAan Qaj42 Q22 ... Am2
+A= , A=].
+Am1 Am2 --- Amn Qin Gan +--+» Amn
+(1.1.6)
+
+Recall that the scalar product of two vectors v,w € R? is defined by
+
+d
+(v,w) :=viw= So vii. (1.1.7)
+i=1
+
+The (2-)norm of a vector v € R¢ is defined as
+
+IIv|| = V/(v,v) = Vviv = (1.1.8)
+Let v,w € R?. Then we denote
+view: = W=l,...,d:u; < wy. (1.1.9)
+
+For a set S, we denote the cardinality of S (the number of elements in
+
+S) by |S].
+
+Let v1, V2... Vn € R%, then we denote the span of the vectors by
+
+span({V1, V2... Vn}) = {S- Avi: Vi=1,...,n:A; © R}. (1.1.10)
+i=1
+
+The sign function is defined as
+
+sign: R— {-1,+1}
+
+1 xr>0
+wr > (1.1.11)
+-l1 «<0.
+For a quadratic matrix A ¢ R”*™ with entries a;;, we denote the trace
+
+by
+tr(A) = Se ais (1.1.12)
+i=l
+
+1.2 Scalar Projection
+
+Definition 1.2.1 (Scalar Projection). Let v,w € R¢ with w 40. The scalar
+
+wiv
+
+[wl
+
+
+--- Page 9 ---
+Mathematical Notation & Basics
+
+We observe that the scalar projection is a scalar, not a vector. This quantity
+also has a nice geometric interpretation? as illustrated in Fig. 1.2.1.
+
+VU
+
+IL,,'(v)
+
+Figure 1.2.1: Geometrical illustration of the scalar projection: Given the vectors v
+and w, here Ily(v) is the scalar projection of v onto w.
+
+1.3  Hyperplanes
+
+Definition 1.3.1 ((Affine-)linear Function). An (affine-)linear function is a
+function f : R¢ — R of the form f(x) = w'x + b, where w € R@\{0} and
+b € R. For the sake of simplicity, we call (affine-)linear functions just linear
+
+functions.
+v
+
+Example 1.1. The function
+
+f:R OR
+
+(*:) b> 34, +4249 —7
+x
+
+2
+
+is (affine-)linear as it is of the form f(x) = ( 3 ) ( 1 ) — 7.
+
+A
+
+Definition 1.3.2 (Hyperplane). A hyperplane is a subset H C R¢ defined as
+H := {x € R*: f(x) = 0}, where f is (affine-)linear.
+
+Proposition 1.3.3. Let H be a hyperplane defined by the affine-linear function
+f(x) =w!x+b. The vector w is orthogonal to H, meaning that: Vx,,x2 € H
+w! (x, — X) =0 holds.
+
+Proof. Let x1,X2 € H = {x €R¢:wlx+b= O}. Then w/x, + b = 0 and
+w! x. +b=0. Thus
+
+wx; tb=w'x2.+b <> w! (x; — x2) = 0.
+
+3 If you are looking for a proof, see: https: //www. youtube. com/watch?v=LyGKycYT2vo.
+
+(affine-) linear
+function
+
+hyperplane
+
+
+--- Page 10 ---
+10
+
+Mathematical Notation & Basics
+
+signed distance
+
+eigenvalue
+
+Definition 1.3.4 (Signed Distance). The signed distance of a point x to H
+is given by
+os T . _
+d(x, H) := sign (w'x +b) min lz — Z|]. (1.3.1)
+
+Observe how (1.3.1) implies that
+la(x, H)| = min er — a.
+
+As the name suggests, the signed distance gives us the distance from a point to
+the hyperplane. It is positive if it is towards the normal and negative elsewise.
+
+Proposition 1.3.5. For the signed distance, we have that:
+
+1
+d(x, H) = eal (w'x +b). (1.3.2)
+
+Proof. Let x be an arbitrary element of H. By our previous proof, we know
+that w is orthogonal to our hyperplane. First we notice from Fig. 1.3.1 that
+
+~ . _s _ . T . _<s
+Vx € H : Il,(x — Xx) = sign (w'x +b) min ||x x||,
+
+where sign (w'x + b) indicates on which side of the hyperplane x lies. So
+
+ae, W'(x—X) wlx—w'xi w'x+b
+
+d(x, H) = Iy(x-x) =
+
+d
+
+Iw iwi fw]
+
+where in (x) we use: X € H > w'X+b0=0 = —w'x=40.
+
+Figure 1.3.1: The hyperplane and the vectors are represented geometrically. Crucial
+for the proof of Proposition 1.3.5 is the observation that d(x, H) = ILy(x — x).
+
+1.4 Eigenvalues
+
+Definition 1.4.1 (Eigenvalue). Let A € R%?¢. \ € R is called an eigenvalue
+
+
+
+--- Page 11 ---
+Mathematical Notation & Basics
+
+11
+
+of A if there is a vector x € R?\ {0} such that Ax = \x. In that case, x is an
+eigenvector corresponding to the eigenvalue A. The set
+
+Eig(A, A) := {x € R*: Ax = Ax} (1.4.1)
+is called the ezgenspace corresponding to the eigenvalue A.
+
+Intuitively, an eigenvector preserves its direction under the linear transforma-
+tion A but not necessarily its magnitude.
+
+v
+Example 1.2. [Eigenvalue Calculation] Let
+—6 3
+B= .
+(is)
+
+Let us try to find the eigenvalues of the matrix B. Let J denote the identity
+matrix. For \ € R and A € R®%, it holds:
+
+d eigenvalue of A — + 3x40 € R¢ with Ax = \x
+
+x £0 € R? with Ax = \Jx
+
+x £0 € R? with \Jx — Ax = 0
+dim Ker(AJ — A) > 0
+
+dim Im(AI — A) < d
+
+AI — A not invertible
+
+det(AJ — A) = 0.
+
+Ptddq
+
+Let us use this insight to calculate the eigenvalues of B:
+A+6 3
+cet ( A yg )=8 = AFHV=5)-12=0
+=> 2 4+\-42=0
+—> (A+ 7)(A—6) = 0.
+
+Apparently, the eigenvalues of A are —7 and 6. We can also find the corres-
+ponding eigenvectors by resubstituting these values back into Ax = Ax.
+
+A
+
+1.5 Positive Definite Matrices
+
+Definition 1.5.1 (Positive Definiteness). Let A € R%¢ be a symmetric
+matrix (A' = A). We call
+
+A positive definite: —» Vx 40¢R*: x'Ax>0 (1.5.1)
+
+A negative definite: — > Vx 40€R*: x' Ax <0 (1.5.2)
+
+A positive semi-definite: —> Vx 40€R*: x'Ax>0 (1.5.3)
+
+A negative semi-definite: — > Vx 40¢R*: x! Ax <0. (1.5.4)
+
+positive defin-
+iteness
+
+
+--- Page 12 ---
+12
+
+Mathematical Notation & Basics
+
+gradient
+
+hessian matrix
+
+1.6 Gradient
+
+Definition 1.6.1 (Gradient). Let f : R¢ > R be differentiable. We define
+the gradient by:
++
+Vf =grad f := Of Of . (1.6.1)
+Ov, OX
+
+We observe that Vf is again a function. Each component of the gradient tells
+us how fast our function changes in each direction. To see how fast the change
+is at a point p into direction v, we multiply V f(p)-v. Observe that this scalar
+product is maximized if v is parallel to Vf(p), which shows that Vf points
+towards the direction of the steepest ascent.
+
+1.7 Hessian Matrix
+
+Definition 1.7.1 (Hessian Matrix). Let f : R¢ > R. If all second partial
+derivatives of f exist and are continuous over the domain of the function, then
+
+the Hessian matrix (also simply called the Hessian) is defined by:
+
+af of of
+
+Seon (*) Toa) °° Tom (X
+2 i af of
+
+_ 0 f _ 022021 x) 0220x2 x 02202y x
+
+H (x) = (x) =
+
+Ox,0x; igj=l,..d .
+af af af
+
+Dendai(%) Dandag %) °°" Dendag (X
+
+(1.7.1)
+
+Example 1.3. [Hessian Matrix] Let f : R? > R, f(z, y) = #3 4+ y? — 32y.
+Let us try to calculate the Hessian matrix of f in a point (x,y). First we need
+to find the partial derivatives. We have:
+
+(6)
+
+Fe, y) = 3a? — 3y
+Ox
+
+Of 3
+
+5y y) = 3y° — 3z.
+
+We know that
+
+
+
+--- Page 13 ---
+Mathematical Notation & Basics 13
+
+With this information, we can now state the Hessian matrix:
+62 —3
+H=( .
+—3 6y
+|
+
+Theorem 1.7.2. Let Hs(x) be the Hessian (matrix) of a function f in a point
+x, as defined in Definition 1.7.1. Then the following statements hold:
+
+e For any x, Hy(x) is symmetric.
+e If f is a conver function, then H s(x) is positive semi-definite for any x.
+
+e If Hs(x) is positive definite at a critical point x (meaning V f(x) = 0),
+then f attains an isolated local minimum at x.
+
+e If Hs(x) is negative definite at a critical point x, then f attains an isol-
+ated local maximum at x .
+
+We finish the chapter with useful derivatives we will continually use during the
+course.
+
+Theorem 1.7.3 (Calculation rules for derivatives). The following statements
+
+hold:
+e 2c'x=c
+e 2 Ax =A
+e 2x! Ax = (A + A’) x
+° 2||x||? = 2x'x = 2x.
+
+See [11] for further useful properties.
+
+1.8 Exercises
+
+1. The scalar projection, Il,(x), of a vector x onto another vector w is
+defined as the coordinate of the orthonormal projection of x onto a line
+parallel to w. Assume b := x — OD] and b'w = 0, then H,,(x) := ay.
+Show that the scalar projection of vector x onto w is equal to:
+
+Thy (x) = 1 tx.
+w||
+
+2. Let f(x) :-= w'x +0, with w,x € R?,b ER. Let A be a hyperplane
+defined as H := {x € R¢|f(x) = 0} and let x € H. The signed distance
+of x € R¢ to H is d(x, H) := Ily(x — x). Show that the signed distance
+can be equivalently defined as:
+
+
+
+--- Page 14 ---
+14
+
+Mathematical Notation & Basics
+
+3. In this question, we will be exploring eigenvectors and eigenvalues. Let
+
+A €R* 4, Recall the following definition from linear algebra: A vector
+
+v € R¢ is an eigenvector of A if and only if there exists \ €
+
+R such that
+
+Av = Av. We then call » the ezgenvalue of A associated with the vector
+
+v. Note that, if v is an eigenvector of A, then, for any a €
+
+R, av is also
+
+an eigenvector of A. Therefore, v and av are not considered ‘distinct’
+
+eigenvectors. Prove the following:
+
+Proposition 1. Jf A has a finite number of distinct eigenvectors, then
+
+each eigenvector must have a unique eigenvalue.
+
+4. Solve the programming assignment Sheet O.ipynb. You will need to in-
+
+stall the Jupyter notebook software to open this file and solve the task.
+
+Please visit the Jupyter website* for instructions on how to
+
+do that. We
+
+recommend conda? for installing and managing Python environments.
+
+4 https: //jupyter.org/install#getting-started-with-the-classic- jupyter-notebook
+
+5 https: //docs.conda.io/en/latest/miniconda.html
+
+
+--- Page 15 ---
+Linear Classifiers & SVM
+
+15
+
+2 Linear Classifiers & SVM
+
+Classification is the problem of identifying to which of a set of categories a
+new observation belongs, on the basis of a training set of data elements whose
+category membership is known. In this chapter, we consider a simplification
+of classification, namely binary classification, as in Fig. 2.3.1. In binary clas-
+sification, the set of categories has cardinality 2. In the context of binary
+classification, we consider linear classifiers, which are fairly simple but work
+well surprisingly often.
+
+2.1 Formal Setting
+Let ¥ (input space) and Y (label space) be some sets. A given set of the form
+
+D := {(%1,41),---;(Xn, Yn) } CX KY
+
+is called training data, where
+
+Xy1,---,Xn
+are our inputs and y,,...,Y, are the corresponding labels. We call
+X := (X1,X2,---,Xn)
+
+the data matrix, whose columns consist of the input data points. Our goal is
+to write a function f : ¥ > Y (prediction function), which correctly predicts
+the label of yet unseen data with the help of our training data. We call
+the elements of Y classes. If there are finitely many classes, we also call
+f a classifier. The algorithm used to find such an f with the help of the
+training data is called learning machine or learning algorithm. This process
+
+is also called training. Unless stated otherwise, our setting will be ¥ = R%,
+Y = {-1,1} and D := {(x1,y1),..-, (Xn, Yn) } C & x Y as our training data.
+This is the binary classification setting.
+
+v
+
+Example 2.1. To facilitate understanding, let us go through the aforemen-
+tioned terms in an example. Consider the following dataset:
+
+Table 2.1: Assume n persons were asked whether they are currently happy with
+
+their life in the following imaginary dataset.
+
+Person | Marital Status | Bank Account | Happy ?
+John Married 39,000 € Yes
+Maria Single 100,000 € No
+Donald | Single 7,500€ Yes
+Peter Divorced -2,000€ No
+
+
+
+--- Page 16 ---
+16
+
+Linear Classifiers & SVM
+
+linear classifier
+
+Now, assuming a new person shows up and we know their marital status and
+bank account status, we would like to predict whether they are currently happy.
+Let us first encode our dataset. We consider the marital status married (1),
+single (2), and divorced (3) and finally encode the classifications happy (1)
+and unhappy (-1). As the person’s name is somewhat irrelevant, we discard it
+altogether. Thus, our input space ¥ and label space JY are of the form
+
+X = {1,2,3}xR, Y={-1,41}.
+
+Our second datapoint (Maria) can now be seen as
+
+(X2+Ya) = (( Loo000 ) 1)
+
+The whole data matrix would be
+
+(1 2 2 3
+~ \35000 100000 ... 7500 —2000 )
+
+Given the dataset, one could construct a function f : ¥ > Y, which we could
+use to predict whether a new person is happy. Notice that f would even be a
+binary classifier in our case, as || = 2. Whether one can actually use marital
+status and bank account status to predict happiness is irrelevant in our course,
+but it is always good to have this in the back of our mind. In the following
+chapters, we will see how we can construct f given D = {(x1, y1),.--, (Xn, Yn) }-
+
+A
+
+2.2 Linear Classifier
+
+Definition 2.2.1 (Linear Classifier). A classifier of the form f(x) = sign(w!x+
+b) is called a linear classifier.
+
+v
+
+Example 2.2. [Nearest Centroid Classifier] The idea of NCC is the following:
+Given our training data, look at the two clusters (groups of data points):
+
+A:= {x; : (x, yi)€ D, y=—-1}, B:= {x : (xi, y;) € D, y= +1}.
+
+These clusters partition our training data into two groups. To find the label
+of a new data point, we check whether the new data point is closer to the
+centroid of cluster A or the centroid of cluster B and give it the label —1 or
++1, respectively. See also Fig. 2.2.1.
+
+A
+
+Algorithm:
+
+1
+—S>x,Cy1 =a» x.
+
+e Training: Compute the centroids c_; = Al By
+LEA xEeB
+
+
+--- Page 17 ---
+Linear Classifiers & SVM
+
+e Prediction: Given a new data point xx, set yz = arg minjey—1,41} |[€: — Xx] -
+
+Theorem 2.2.2. NCC is a linear classifier.
+
+Proof. We want to write the condition whether a new data point is closer to
+c_, or to cy, in the form sign(w'x+b = 0). As NCC classifies points based on
+which centroid is closer, points that are equidistant to both centroids should
+be on the sought hyperplane.
+
+So we want that w'x+b=0 <= > ||x—c_,|| = ||x —c44||. By expanding
+the right side, we get:
+
+Ix — cal] = |x -— cya) > |x—c-all? = x — cual?
+<=> |[x||° — 2x14 + |le-a||? = [Ix]? — 2x Tex + Ileal?
+<=> —2x!e_) + 2x'e4, + |le_i||’ — leq ||? =0
+=> (C4, — C1)! x + lea]? = legal? = 0.
+
+=w!l =:b
+
+This shows that NCC is a linear classifier. Notice that w := 2(c_1 — 41)
+and b := |le,;||? — ||e_;||? would also yield a linear classifier, but the two
+hyperplanes would have swapped signed distance. To see which formulation
+matches with our setting, it suffices to plug in the centroids and see whether
+the labels match. The NCC is a first example of linear classifiers. There are
+more to come in the following.
+
+OO %
+
+w'x+b=0
+
+Figure 2.2.1: Visualization of the NCC. The white points represent class —1 with
+centroid c_ 1, whereas the black points represent class +1 with centroid c,4. The
+separating hyperplane will be linear and defined as in the proof of Theorem 2.2.2.
+
+2.3 Support Vector Machine (SVM)
+
+We seek the best hyperplane separating our data. To this end, consider
+Fig. 2.3.1 (left). Intuitively, the best (fairest) hyperplane would be the one that
+separates the data with the largest margin, visualized in Fig. 2.3.1 (right). We
+also want our hyperplane to separate our data correctly; namely, we require
+all points with the label +1 to lie "above" the hyperplane and all points with
+
+
+--- Page 18 ---
+18
+
+Linear Classifiers & SVM
+\ rae [
+1 aa e support vegtor ©, /
+e \ , suppoft vector
+e' o* (e)
+1 ¢ ro) /
+—=—-4 /
+14 /
+“fe = / fe)
+e e an ® support vector
+o 1
+Pa 1 oO
+¢
+ra 1
+- 1
+? 1
+2 \
+¢
+=a ° ° o
+° aA
+1
+1
+Figure 2.3.1: Visualization of linear classifiers. Data points with the label —1 are
+
+black and those with the label +1 are white. Left: Two potential classifiers. Right:
+The hard-margin SVM H and its margin hyperplanes H, and H_.
+
+the label —1 to be "below" this hyperplane. We can formalize this thought
+mathematically: Assume there exists a line that can separate our data. Let
+
+H={xe
+
+R4: w'x+b=0},
+
+can be described by
+
+with w # 0, be a hyperplane. The margin y is the size of the open space
+around the hyperplane that no points occupy. Its boundaries on either side
+
+and
+
+R¢: w'x+b= y}
+
+H_={xe
+
+R¢: wix+b=—y}.
+
+We additionally require all points with the label +1 to be “above” H, and
+all points with the label —1 to be “below” H_. Our goal is to maximize +
+by choosing appropriate w and b. Recall the signed distance from Proposi-
+tion 1.3.5:
+
+d(x, H) = ——
+
++
+
+We wish to not just choose any hyperplane; rather, we wish to choose our
+hyperplane such that the classification is done correctly. Since we will use the
+signed distance for classification, we need
+d(x;,H) > 0ify=+1
+d(x;,H) <O0if y,=—-1
+
+We simplify these two constraints by the new constraint:
+
+yi: d(xi, H) > 0.
+
+(2.3.1)
+Finally, the distance between any point and the hyperplane should be at least
+y, giving the constraint:
+
+yi U(xi,H) > y — > yi (w'x; +) > ||w|l7.
+
+(2.3.2)
+
+
+--- Page 19 ---
+Linear Classifiers & SVM 19
+
+Last, we make the observation that if (2.3.2) is satisfied, (2.3.1) is trivially
+satisfied because 7 > 0 (y > 0 holds because y=0 is a trivial lower bound of
+our maximization problem). This gives us our maximization problem:
+
+max ¥
+7,bER,wER4@\ {0}
+s.t. yi (w!x; +b) > ||wily, Vie 1,...,n. (2.3.3)
+
+Definition 2.3.1 (Hard-margin SVM). The mathematical program (2.3.3) is  hard-margin
+called the hard-margin SVM. SVM
+
+Let us intuitively recap(2.3.3). Our objective function maximizes the margin,
+and each of the n constraints makes sure that we classify datapoint x; correctly.
+We managed to achieve the formalization that we wanted. We now state a few
+problems with the hard-margin SVM. First, data points are not always linearly
+separable (see Fig. 2.3.2). Also, outlier points can potentially corrupt the SVM
+
+@® Oo
+O ©
+
+Figure 2.3.2: A set of data points that is not linearly separable
+
+(see Fig. 2.3.3). To fix this issue, we take a closer look at (2.3.3). A first idea
+
+O
+O . e
+0 OO
+0." ee
+“e e
+
+Figure 2.3.3: An outlier point forces us to choose a suboptimal hyperplane.
+
+could be to allow some more freedom in the constraints. Not every data point
+needs to have a distance of y to the hyperplane. If we allow for every datapoint
+a variable
+
+&>0 W=1,...,n,
+
+then we can formalize this by:
+yi (w' x; +b) > |lwily-&, Vi=l,...n.
+
+By choosing &; large enough, our problem becomes unbounded. To not let this
+happen, we need to somehow penalize our maximization function every time
+we use €;. One way to do so could be:
+
+n
+max —C i
+
+
+--- Page 20 ---
+20
+
+Linear Classifiers & SVM
+
+soft-margin
+SVM
+
+support vector
+
+where C’ is a constant telling us how harshly to penalize. The higher C’, the
+more we penalize violations. Finally, we get:
+
+n
+max -C
+
+s.t. yi (w' x; +b) > |lwily-& Wi=1,...0
+& 20 Vi =1,...n. (2.3.4)
+
+Definition 2.3.2 (Soft-Margin SVM). The mathematical program (2.3.4) is
+called the soft-margin SVM.
+
+Let us intuitively recap (2.3.4). The objective function wants to maximize the
+margin while also violating penalizations. The constraints lead to a weakened
+version of correct classification, allowing a mistake of the size €;. Furthermore,
+
+the remaining constraints ensure that the €; are positive. Denote by y*, w*,
+and bx the optimal arguments of (2.3.4).
+
+Definition 2.3.3 (Support Vector). All vectors x; with y;-d(x;, H (w*,b*)) <
+y* are called support vectors.
+
+Observation 2.3.4. We notice that (2.3.4) allows the existence of support vec-
+tors. Also notice that the value of (2.3.4) only depends on these support
+vectors. Removing all other data points would not have an effect on the out-
+come of (2.3.4) because, if x; is not a support vector, then €; = 0. Now that
+we have the optimization problem (2.3.4), let us see in the following chapters
+how to solve it.
+
+2.4 Exercises
+
+1. Interestingly, the linear hard-margin SVM given by (2.3.3) requires only
+two (non-equal) training points (with opposite labels) to find a separating
+hyperplane. Let X := {x,,...,Xn} and Y := {y,...,yn}, with x; € R?
+and y; € {—1,1} be a dataset. Let 7*, w*, and b* be the optimal solution
+to (2.3.3) on X,Y. You may assume w* ¥ 0.
+
+a) Find a minimal dataset (X’, Y’) with |X’| = |Y’| = 2 (consisting
+of only two data points) with the same hard-margin SVM solution
+(2.3.3) as for the dataset (X,Y), that is, y*, w*, and b*.
+
+b) Prove that, for your choice of X’ and Y’ in a), y, w*, and b* are
+optimal solutions of (2.3.3).
+
+c) How is this choice of X’ and Y’ related to the nearest centroid
+classifier (NCC)? (Answer this question with at most 5 sentences.)
+
+
+--- Page 21 ---
+Linear Classifiers & SVM 21
+
+2. Consider the soft-margin SVM as in the lecture. Now assume b=0, i.e,
+we do not optimize over b. Construct a dataset for which any classifier
+learned (with b = 0) performs poorly. Does any classifier with 6 fixed to
+a different constant (like b = 1) still perform poorly?
+
+3. Construct a worst-case dataset for the nearest centroid classifier (NCC).
+This dataset should be easily (not necessarily linearly) separable and the
+NCC should behave as poorly as possible on this training dataset. Hint:
+To this end, you will have to figure out for yourself how poorly the NCC
+can perform. Is it possible for the NCC to have 0% accuracy?
+
+4. Solve the programming assignment Sheet 1.ipynb.
+
+
+--- Page 22 ---
+22
+
+Linear Classifiers & SVM
+
+
+
+--- Page 23 ---
+Convex Optimization -
+The Gradient Descent Algorithm 23
+
+3 Convex Optimization -
+The Gradient Descent Algorithm
+
+In the last chapter, we had a look at optimization problems as formalizations of
+the classification problem. In this chapter, we will develop the theory and the
+tools to solve them. The main algorithm in this chapter will be the Gradient
+Descent Algorithm.
+
+3.1 Convex Functions
+
+Definition 3.1.1 (Convex Set). A set Y¥ C R¢@ is called convex if and only if convex set
+
+the line segment connecting any two points in ¥ entirely lies within V, that
+is,
+
+Vx,x/eEX, VOe[0,1]):(1—-0)x+ 0x’ eX.
+
+v
+
+Example 3.1. [Hyperplanes are convex sets| Let H = {x € R?: w'x+b = 0}
+be a hyperplane. We will now show that hyperplanes are convex. Let x1, x2 €
+H and 6 € [0,1]. Then w'x; = —b, w' x2 = —b, and
+
+w!((1 — 0)x; + 6x2) +b = (1—0)w!x,+0w!x2+b = (1—6)(—b) —0b+b = 0.
+
+A
+
+Definition 3.1.2 (Convex Function). A function f : R¢ — R is conver if and convex function
+
+only if the set above the graph is convex or equivalently,
+
+Vx,x’ € R7,V6 € [0,1] : f (1 — 0)x + 0x2) < (1-0) f (x1) + OF (x2).
+
+4 f(x)
+
+f (x2)
+
+(1-89) f(a1) + Of (x2)
+
+f(x1)
+
+Uy x2
+Figure 3.1.1: A convex function.
+
+Definition 3.1.3 (Concave Function). A function f is concave if and only if concave func-
+—f is convex. tion
+
+
+--- Page 24 ---
+Convex Optimization -
+24 The Gradient Descent Algorithm
+
+Recall from Chapter 1 that f is convex if and only if the Hessian matrix H f(x)
+
+is positive semi-definite for all x € R?.
+
+Theorem 3.1.4. The following statements regarding a symmetric matriz M €
+Rdxd
+
+are equivalent:
+
+1. M is positive semi-definite (we write M > 0 ).
+
+2. x'Mx>0 for allx € R%
+
+3. All eigenvalues of M are non-negative.
+v
+
+Example 3.2. [Convex Function] Define f as follows:
+
+R? > R
+‘ (21,02) 4 a} +23 —7.
+
+(2) (an) tte (4 2):
+
+Observe that H,(x) is a diagonal matrix, and we can read the eigenvalues
+
+Note that
+
+from the diagonal. As the eigenvalues are non-negative, it follows that H;(x)
+is positive semi-definite and that f is convex.
+
+A
+
+3.2 Convex Optimization Problems
+
+optimization Definition 3.2.1 (Optimization Problem). An optimization problem (OP) is
+problem of the form:
+
+minxex fo(x)
+st. fi(x) <0,
+0
+
+where we call:
+e fo the objective function.
+ef, Vi=l1...n the inequality constraints.
+
+eg; Vj =1...m the equality constraints..
+
+We observe that this special form is not really a restriction. As for a set 5, we
+have that
+
+maxv = —min—z.
+res res
+
+The inequality constraints can be brought into this form by bringing everything
+to one side and multiplying by —1, if necessary.
+
+
+--- Page 25 ---
+Convex Optimization -
+The Gradient Descent Algorithm
+
+25
+
+Definition 3.2.2 (Convex Optimization Problem). An OP is called convex if
+and only if the functions fo, f1,..., fn are convex and g1,...., Gm are linear.
+
+v
+Example 3.3. [Convex Optimization Problem] Recall the hard-margin SVM
+(2.3.3).
++/beRweR*\ {0}!
+st. yi (w'x; +) > ||wlly Viel...n.
+
+Let us check if this is a convex OP. According to the definition above, we need
+to check whether the following is convex for each 7:
+
+F(7,b,w) = |lwlly — yi (w'xi +0).
+
+We can show that even in the case of b= 0 and w > 0 € Ruz, the function is
+
+not convex. Let us verify this for the simple case of d = 1. Then the objective
+function is just:
+f(q,w) = wy — yi(wei).
+
+Then the Hessian matrix
+0 1
+AH =
+r(x) ( 10 ) ;
+
+is not positive semi-definite as det(H,;(«)) = —1, which shows that the hard-
+margin SVM is not a convex OP.
+
+A
+
+3.3 Making the SVM Convex
+
+In the previous example, we saw that the hard-margin SVM is not a convex
+OP, but, as we will show, we can make it convex for practical purposes.
+
+Theorem 3.3.1. Assuming the data is linearly separable, then the linear hard-
+margin SVM, that is,
+
+max s.t. y; (w'x; +b) > |lwlly,
+sybeR,weR*\ {0} | y ( ) = ||w|ly
+
+can be equivalently rewritten in convex form as given below:
+
+bER,wER4
+8.t. 1—y: (w'x, +b) <0 Vi=l,...,n.
+
+convex optimiz-
+ation problem
+
+
+--- Page 26 ---
+26
+
+Convex Optimization -
+The Gradient Descent Algorithm
+
+Proof. As we assume the data to be linearly separable (that is we can find a
+hyperplane separating our datapoints), it suffices to find a convex OP for
+
+wy s.t. yi (w! x; +6) > |lw 3.3.1
++50,beR weR®\{0} | yi ( ) = |lwllv. ( )
+
+Our SVM will give us the parameters w and b, which we will use to define the
+classifier
+
+f(x) =sign (w'x +0).
+
+Notice that these parameters are not unique as
+
+VA > 0: sign (w'x + 6) =sign(Aw? x + Ab). (3.3.2)
+=!W) =:by
+
+Now observe that max y has the same behavior as min 2 Decreasing /increasing
+
+7 has the same effect on both. So we can write (3.3.1) as
+
+1
+
+min — st. y;(w!x;+b) > |lwlly. 333
+>0,bER,weR4\ {0} 2? y ( ) = | IY ( )
+
+According to (3.3.2), we get that (3.3.3) is equivalent to
+1
+2
+
+min —  s.t. ; (Aw! x; + Ab) > Allwlly. 3.3.4
+y>0,beER,weR@\{0} 2 yi ( ) = Allwlly ( )
+
+We can rename Ab as b as both are any scalar in R. So (3.3.4) is equivalent to
+
+1
+i — st. yj; (Aw'x; +6) >A ; 3.3.5
+ponckmenno, 2 SE wAW E+) 2 Awl, (B35)
+1
+Choose A := —— > 0 to write (3.3.5) in the form
+Iw] 7
+1 w! x;
+min — st. y, | ——-+6] >1. 3.3.6
+>0,bER,weR®\ {0} 2? y (a. ) — ( )
+oo UW ae |||
+Substituting w := — and rewriting ||w|| = = = 1/7, we
+I|wlly wily} [hwlly
+get:
+iw wil? ost. y(Ww'x, +b) >1. (3.3.7)
+
+beR weR*\{0} 2
+
+Assuming the set of data points contains at least one point from each class
+
+(Si, j : (xi, 1), (xj, -1)), we can now allow w = 0, since y; (wx; +b) = yb >
+1 cannot be satisfied for w = 0 because w = 0 will never be in the set we
+optimize over. Finally, we get (3.3.7) as
+
+2 T
+ain, Sl | . y ( xi + ) ~ ( )
+
+
+
+--- Page 27 ---
+Convex Optimization -
+The Gradient Descent Algorithm
+
+27
+
+It is easy to verify that (3.3.8) is indeed convex: The objective is convex and
+quadratic, and the constraints are linear.
+
+Theorem 3.3.2. We can formulate the linear soft-margin SVM, that is,
+
+n
+max -—C
+
+s.t. yi (w' x; +b) > |lwily-&, Vi=l,...,n
+
+as a convex OP of the form:
+
+L lw? +O", &
+beR.wek! ger” 2 Il w|| + 1 &;
+s.t. 1-&-—y;(w'x,+b) <0, -€ <0 Wi=l,...,n.
+
+(3.3.9)
+
+3.4 Solving Convex Optimization Problems
+
+We saw that we can rewrite our soft-/hard-margin SVM as convex optimization
+problems. Now we still need to find an algorithm to solve them. We will use
+the following useful theorem:
+
+Theorem 3.4.1. Every locally optimal point of a convex optimization problem
+is also globally optimal.
+
+F(x) f(x)
+
+a Coad
+
+x x
+
+Figure 3.4.1: On the left, we see a convex function, on the right a non-convex
+function
+
+Apparently it suffices to search only for a local optimum to find a global one
+in convex functions. The algorithm we will use is gradient descent. Its idea is
+to start at a random point and continuously go in the direction of the steepest
+descent. The direction of the steepest descent is the negative of the direction
+of the steepest ascent, which is the direction of the gradient.
+
+
+--- Page 28 ---
+Convex Optimization -
+The Gradient Descent Algorithm
+
+Algorithm Gradient Descent
+
+Input: A convex function f, point x1 (e.g., chosen randomly), 7’ number of
+
+iteration steps.
+
+1: function GRADDESCENT(f, x1)
+2 fort <+1toT do
+
+3: X41 — Xt — AV fo (Xt)
+A: end for
+
+5 return x7
+
+6: end function
+
+Definition 3.4.2 (Step Size). We call X, the step size or learning rate.
+
+Observe that finding a good step size is important. If the step size is too small,
+we need a higher 7’ to reach a global minimum. If the step size is too big, we
+can overshoot the minimum or the algorithm might even not find a minimum
+
+1
+at all. A typical choice would be A; := r
+
+VU
+
+Figure 3.4.2: The behavior of the gradient descent algorithm.
+
+Theorem 3.4.3. Let fy : R¢ > R be an arbitrary (possibly non-convex) ob-
+6
+
+jective function. Then, under some assumptions, ° we have:
+
+e Gradient descent converges towards a stationary point (mazimum, min-
+imum, saddle point), which, for practical purposes, is usually a min-
+
+amum.
+
+e For choosing the ideal learning rate, the convergence rate is at least as
+good as:
+
+fo (Xt) — fo (Xtocar) S OC/1).
+
+® The theorem assumes Lipschitz-continuous gradients with a uniformly bounded Lipschitz
+constant JL : ||V f(x) — Vf(&)|| < L\|x — x|]. Convergence is guaranteed for all learning
+rate schedules satisfying yan At = coand A; with t 4 co =and A; > 0, but with varying
+rates of convergence. The favorable O(1/t) rate is achieved using the minimization rule:
+At = argminy fo (xt — AV fo (Xz)) . See [1].
+
+
+
+--- Page 29 ---
+Convex Optimization -
+The Gradient Descent Algorithm
+
+3.5 Applying Gradient Descent on the Convex SVM
+
+Let us recall the convex soft-margin SVM
+
+Lwlf2+O30", &
+beR.wek! ger” 2 ||| + ie Ej
+s.t. 1-&-—y;(w'x, +b) <0, -& <0 Wi=l,...n.
+
+If we look at the gradient descent algorithm, we notice that the input is a
+convex function. But our OP has one objective function and two inequality
+constraints for each data point. A quick fix would be to include the two
+inequality constraints in the objective function. Let us look at the inequality
+constraints
+
+1—&—y(w'x;+b) <0 => 1-y(w'x; +d) <&
+and
+—& <0 = 0<&.
+
+Together we get that
+
+max (1 — y; (w! x; + b) ,0) < &,
+which we can safely plug in as an equality into our objective function as we
+are minimizing, resulting in the following Proposition:
+Proposition 3.5.1. The convex soft-margin SVM can be rewritten as
+
+_ 1 -
+pn 5m” + Cd jmax (0,1 —y; (w'x; +0)).
+
+Our new unconstrained objective becomes
+
+fo(w, 6) = 5|hw|? + CS> max (0,1 — ys (wT, +0).
+
+i=1
+
+Let us look at the part
+max (1 — y; (w'x; +d) , 0).
+
+This part of the function is not differentiable. We can see this by replacing
+Yi (w'x; + b) (a linear growth function) by z, resulting in the so-called hinge
+function
+
+max (1 — z,0),
+
+which has two tangent lines at z = 1, one with slope —1 and the other with
+slope 0. A potential solution would be to just choose any of the derivatives at
+this point, so we consider the subgradient:
+
+Vi - yi (w'x; + b)) if y; (w' x; + b) <1
+
+0 else.
+
+V max (1 — y; (w! x; + b) ,0) :=
+
+
+--- Page 30 ---
+30
+
+Convex Optimization -
+The Gradient Descent Algorithm
+
+logistic re-
+gression
+
+Function Comparison
+
+—— Hinge Function
+~~ Logistic Function
+
+Figure 3.5.1: We observe that the logistic function is a differentiable approximation
+to the hinge function.
+
+Finally, we use the subgradient descent algorithm, which is the normal gradi-
+ent descent algorithm, but using the subgradient in place of the gradient. An
+alternative solution could be to replace this function with something differen-
+tiable exhibiting similar behavior. Let us look at the logistic function
+
+I(z) := In(1 + exp(—z)).
+
+Definition 3.5.2 (Logistic Regression). Replacing, in the unconstrained con-
+vex soft-margin SVM (3.3.9), the hinge function by the logistic function, we
+obtain the logistic regression:
+
+fo(w, b) = sl? +C S- In(1 + exp(—y;(w x; + b))). (3.5.1)
+
+i=1
+As the logistic regression is differentiable, we can use the gradient descent
+algorithm. Let us discuss a final problem. Notice that we need to iterate
+through all data points to calculate the (sub)gradient. That would mean n
+iterations, where n can be large for big data. A solution would be to try and
+approximate the value of the function, leading us to the following algorithm:
+
+Algorithm Stochastic Subgradient Descent (SGD) SVM
+Input: A starting point (w, b),, batch size B, T number of iteration steps
+
+1: fort + 1 to T do
+
+2: Randomly select B data points
+
+3: Denote their indices by J C {1...n}
+
+4: (w, b)iz1 — (Ww, b)e—ALV ww) (sil + & S* max (0,1 — y; (we! x: + 4)
+ie€l
+
+5: end for
+
+6: return (w, b)r
+
+)
+
+
+--- Page 31 ---
+Convex Optimization -
+The Gradient Descent Algorithm
+
+31
+
+Observation 3.5.3. In SGD, we approximate
+C S- max (0,1 — y; (w' x; + b))
+i=1
+
+by
+
+ae max (0, 1—y; (w!x; + b)) .
+ie
+
+The scalar 7 is necessary to rescale the value up as we only calculated the
+value for B points. The value of B € [1...N] called the batch size needs to
+be chosen beforehand. We can use the exact same algorithm also for logistic
+regression, by just substituting it in step 4 of the algorithm.
+
+0.5 ~ 05 \
+-1000  -500 0 500 1000 1500 2000 000 -500 0 S00 1000 1500 2000
+0 4
+
+Figure 3.5.2: Visualization of the gradient descent algorithms. To the left, we have
+the classical gradient descent algorithm and to the right, the stochastic gradient
+descent. Notice how on the right we are not always perfectly going towards the
+steepest descent as the gradient is only approximated.
+
+Theorem 3.5.4. Consider SGD using the learning rate \; := 1/t. Then, under
+mild assumptions, SGD converges with high probability to a stationary point
+(see [1]), which is usually a minimum with the rate:
+
+fo (Xt) — fo (Xiccat ) < O(1/t).
+
+3.6 Exercises
+
+1. In this exercise, we will try to understand the gradient descent algorithm,
+its initialization value, and its learning rate schedule. Consider only the
+functions
+
+f:ROR.
+
+a) Find a constant learning rate schedule (A; = c), a convex function
+f (with a global minimum), and an initialization value x9 such that
+the global minimum is never reached if you apply gradient descent
+with A; on f starting at xp. Prove that the function is convex. Prove
+that the global minimum is never reached.
+
+
+--- Page 32 ---
+32
+
+Convex Optimization -
+The Gradient Descent Algorithm
+
+b) For your choice of convex function and initialization value, is it
+possible to choose a learning rate schedule (constant or otherwise)
+such that the global minimum is reached? Prove your claim.
+
+c) Give an example of an unbounded function (f(R) = R), a learning
+
+rate schedule, and an initialization value for which gradient descent
+converges to a plateau (a critical point that is neither a minimum
+nor a maximum). The initialization value cannot be chosen as this
+plateau.
+
+d) Consider f(x) = x3. Is it possible to find a learning rate schedule
+that converges to the plateau at x = 0 for any initialization value?
+Prove your claim.
+
+2. Solve Sheet 2.ipynb.
+
+
+--- Page 33 ---
+Kernel SVM 33
+
+4 Kernel SVM
+
+In the last chapters, we studied how to separate data. We mostly ignored the
+case where the data is not linearly separable, but we will come back to it now.
+
+4.1 Kernel Methods
+
+Kernel methods are a paradigm for efficiently converting linear learning ma-
+chines into non-linear ones. At a high level, this works in the following way:
+
+1. Define, in a clever way, a non-linear map
+
+@:R?> RY,
+
+where R” is a very high dimensional space (D >> d).
+
+2. Map the inputs onto that space,
+
+xi O(xi), t=1,...,n.
+
+3. Separate the data linearly in that space,
+
+f(x) = sign((w, 6(a)) + 6).
+4. This linear separation in the high dimensional space corresponds to a
+non-linear separation in the input space.
+v
+
+Example 4.1. Consider the map:
+
+¢:R? > R'
+
+(11,22) HO (x7, V 2012, £3).
+
+Figure 4.1.1: Visualization of the mapping ¢.
+
+
+--- Page 34 ---
+34
+
+Kernel SVM
+
+kernel function
+
+Observation 4.1.1. Notice how in Figure 4.1.1, a linear separation in R?® cor-
+
+responds to a non-linear separation in R?: For instance, for the hyperplane
+w’ x +b defined by:
+
+the corresponding separation for x = (x1, 72) in R? would be
+
++
+1 xy
+
+w'¢(x)+b= | 0 V2Qa,22 | + (-l) =274+23-1,
+1 rs
+
+which would be the unit circle. The image space is usually too high-dimensional
+to perform operations such as scalar products in it. In our example, we can do
+the following: Let x = (x1, 72) and X = (#1, #2). Let us try to compute their
+inner product in the image space:
+
+2 qT ~ 2
+Ly Uy
+2 ~ 2
+
+T ,
+
+re
+
+= (x
+
+Apparently we can compute the scalar product in the image space by only
+
+computing scalar products in R?. This is an example of the kernel trick and
+k(x, X) := (x, xX)? is an example of a kernel.
+
+A
+
+Definition 4.1.2 (Kernel). A function k : R? x R¢ > R is called a kernel
+function (or simply kernel) if all of the following holds:
+
+1. It is symmetric, that is: Vx, x’ : k(x, x’) = k(x’, x)
+
+2. There exists a map @ : R? + H called kernel feature map into some
+high-dimensional kernel feature space H (e.g., # = R! or H = R® [12})
+such that:
+
+Vx,x ER’: k(x,x) = (6(x), o(x)).
+
+We can now formalize the kernel trick.
+
+1. Formulate the (linear) learning machine (training and prediction) solely
+in terms of inner products.
+
+2. Replace the inner products (x;,x;) by the kernel k (xj, x;).
+
+
+--- Page 35 ---
+Kernel SVM
+
+35
+
+Definition 4.1.3 (Linear Kernel). The linear kernel defined as
+
+is a kernel.
+
+Proof. Choose the identity map ¢ = id. Then for all x, x € R? we have:
+
+k(x, ) = (x, X) = (id(x), id(X)) = (9(x), O(&)).
+
+Symmetry follows by the symmetry of the scalar product.
+
+Definition 4.1.4 (Polynomial Kernel). The kernel called polynomial kernel
+of degree m € N is defined as
+
+k(x, x) := ((x,x) +c)™
+
+where c > 0 is a parameter.
+We finally define one of the most important kernels in practice.
+
+Definition 4.1.5 (Gaussian RBF Kernel). The Gaussian RBF kernel is a
+kernel defined as
+
+ba.) = exp (—sE lhe — xl?)
+
+20?
+
+We call the parameter o? > 0 the kernel width (or bandwith).
+
+Definition 4.1.6 (Kernel Matrix). Let x,,...,x, € R¢% be the input data,
+and let k : R? x R¢ > R be a kernel function. Then the matrix
+
+k(x1,X1) ... k(x1,Xn)
+K:= : € R"™™”
+
+k(Xn,X1) .-- k(Xn,Xn)
+
+is called a kernel matrix.
+
+Theorem 4.1.7 (Closure Properties). The following properties hold for given
+functions k, ky and ko.
+
+1. Ifk is a kernel and c € Rx, then ck is a kernel.
+
+2. If ky and ky are kernels, then k, + ko is a kernel.
+
+3. If ky and kg are kernels, then ky - ko is a kernel
+
+linear kernel
+
+polynomial ker-
+nel
+
+Gaussian RBF
+kernel
+
+
+--- Page 36 ---
+36
+
+Kernel SVM
+
+Theorem 4.1.8. A function k : R¢xR4 > H is a kernel if and only if for any
+n €N and any input points x1,...,Xn, the matrix K is positive semi-definite
+(meaning Vv € R": v' Kv > 0).
+
+As seen in the following, Theorem 4.1.8 is quite useful for proving that func-
+tions are kernels.
+v
+
+Example 4.2. [Closure of Kernels under Addition] Let x1,...,x, € R% be
+arbitrary data points, k,,k2 be two kernels, and Ky, K2 be the corresponding
+kernel matrices. Define k := k; + ky. The kernel matrix K of k will look as
+follows:
+
+k(x1,X1) ... k(x1,Xn)
+K= : :
+k(Xn,X1) ... k(n, Xn)
+ky (&1,%1) + ko (&1,%1) --- hy (&1, Xn) + he (1, Xn)
+ky (Xn, X1) + ko (Xn, X1) --- hy (Kn, Xn) + he (Kn, Xn)
+=K,+ Ko.
+
+We know K,, Ke are positive semi-definite. We now prove that K is positive
+semi-definite. It then follows by Theorem 4.1.8 that k is a kernel. Let v € R?%.
+We have:
+
+vi kv=v'(K,+ K.)v =v! (Ki4 Kov) =v Kitv' Kav > 0.
+
+Thus K is positive semi-definite and k is a kernel.
+
+A
+
+4.2 Applying the Kernel Trick to the SVM
+
+Let us recall the unconstrained version of our soft-margin SVM (3.3.9).
+
+_ i -
+pons 5llwil” + Cd max (0,1—y: (w'x;+0)).
+
+Let w* be the optimal solution. We use the fact that w* € span({x1,...Xn}),
+which is a special case of the general representer theorem, which we will prove
+
+later on. So there exists @ = (Q 1, Q2,...,Q@n) € R” such that
+
+w* = D039): (4.2.1)
+
+So we can also find the optimal solution by optimizing over the possible a. By
+plugging (4.2.1) into (3.3.9), we get
+
+.
+seb, gil Lasoo) + CD max 01-4 [3>,000)] (xi) +b
+j= j=
+
+i=1
+
+(4.2.2)
+
+
+--- Page 37 ---
+Kernel SVM
+
+By inserting the definition of the norm and then multiplying out, we equival-
+ently get
+
+belte wer” 2 0.3 (Do cub (Xi ) (>: ots) re ps max [o. tm (> aj6(x5) ' (xi) + ‘)) ;
+. - 7 (4.2.3)
+
+which, by multiplying out and reordering in the last sum, is equivalent to
+
+beR eR” 2 0.3 (3 CHi0j9( xi)! =) + Cas [o. 1l-y » ajO( x;)! @(x;) + s)).
+
+j=l
+
+(4.2.4)
+
+As the SVM is used in the higher-dimensional space, we want to make use of
+our kernel function. So we replace all occurrences of (xi) 'o(x;) by k (x:,x;)
+to finally get:
+
+reo en = Ly ajajk (x;,x;) + CSP max [o. 1— y; [Soo (x;,x;) + ‘)) .
+tj=l i=1 j=l
+(4.2.5)
+We finally get the prediction function:
+
+f(x) =sign (w*"¢ (x) + 0)
+
+=sign (> ots) O(x) +b
+
+j=l
+
+Notice that we actually do not need the feature map ¢. Now that we have
+the training and prediction algorithm, we still need to solve the optimization
+problem (4.2.5). For this, we use a similar approach to the stochastic gradient
+method from Chapter 3.
+
+Algorithm Doubly SGD algorithm for Kernel SVM
+Input: A starting point (b.@);, batch size B, T number of iteration steps.
+
+1: for t+ 1 to T do
+2: Randomly select B data points
+3: Denote their indexes by J C {1,...,n}
+
+(D, over = (Da) — MV ree (se Dies 14h (i, 5)
++4 S*, max (0. 1— y; (4 jer sk (Xi, Xj) + b)))
+5: end for
+6: return (b,a)r
+
+
+
+--- Page 38 ---
+38
+
+Kernel SVM
+
+Observation 4.2.1. This is basically the same algorithm as SGD. Notice that
+we approximate
+S- ayajk (X;, x;)
+ij=l
+by
+n2
+RB do wiaryk (X15)
+igjET
+as we only calculated the sum for B? items, so we need to scale it up. Similar
+
+approximations are done in the rest of the algorithm. Just like in SGD, we are
+giving up a bit of precision to be faster.
+
+In the construction of the Kernel SVM, we used the fact that w* € span({x1,...Xn}).
+
+We will now prove this using a more general statement.
+
+Theorem 4.2.2 (General Representer Theorem). Let k : R¢ x R4 > R be a
+kernel over a Hilbert space H. Let L : R" > R be any function. Then any
+
+solution
+we arg min 5||w||" +L ((w, 6 (x1)),---. (Ww. 4 (%n)))
+we
+
+satisfies:
+
+n
+there Jay,...,Qn such that w* = S- aid (x;).
+i=l
+
+Proof. Let H be a Hilbert space. Consider now
+
+V := span({$(x1),..., O(Xn}),
+
+which is clearly a finitely dimensional subspace and therefore closed. Denote
+by
+U:=V,={ue H|VYWeV: (u,v) =0},
+
+the orthogonal complement of V. According to the orthogonal decomposition
+theorem of Hilbert spaces |12], we can write every vector z € H in a unique
+form:
+w=_v4+.u..
+BY “SS
+EV €U
+Consider now that there exists an optimal solution w* with v* € V and u* € U
+of the form:
+w=v+iu..
+40
+
+For the loss function, we observe the following Vi = 1,...,n:
+
+(w", @(x;)) = (v" +", 6 (x)
+= (v", b(xi)) + (u’, 6 (x)
+—~—
+
+= (v", 6 (xi).
+
+
+--- Page 39 ---
+Kernel SVM 39
+
+So whether we choose w* or v* does not influence the values of the loss function,
+but it does influence the value of the regularizer as we have:
+
+x2 x2 x )2
+
+Iw" |" = [Ive + I'l
+
+SKS
+
+>0
+
+2
+> |lv"|.
+
+This clearly contradicts the optimality of w* as we found the better solution
+vi eV.
+
+4.3 Exercises
+
+1. Suppose that k1,..., kn : R4 x R? > R are kernels. Let c1,...,¢, € Rt
+and p € N. Prove that the following functions k are also kernels.
+
+a) Scaling: k(x, x’) := ck, (x,x’)
+
+b) Linear combination: k(x, x’) := S7i_, ciki(x, x’)
+c) Product: k(x,x’) := ky(x,x’)ko(x,x’)
+
+d) Power: k(x,x’) := k,(x,x’)?.
+
+2. Prove the following statements:
+
+a) Polynomial kernel: k(x, x’) := (x?x’ +)? is a kernel.
+
+b) Limits: If k; : R? x R¢ — R, i € N are kernels and k(x,x’) :=
+limy—soo kin(X, x’) exists for all x,x’, then k(x,x’) is a kernel. Use
+the definition of positive semi-definiteness.
+
+c) Exponents: If / is a kernel, then k(x,x’) := exp (k(x,x’)) is a
+kernel.
+
+d) Functions: If & is a kernel and f : R¢ > R then k(x,x’) :=
+f (x)k(x, x’) f(x’) is a kernel.
+
+e) Gaussian RBF kernel: k(x, x’) := exp (—bexF) is a kernel.
+
+Hint: Use the results from Exercise 1 above.
+
+3. Let k(-,-) be a kernel on R*%. Let ¢(-) be the kernel mapping, i-e.,
+(o(x), (y)) = k(x,y). Let x),...,x, € R4, a = [a,...,a,]" € R”
+and b = [by,...,b,]" € R". Let K € R"™" = [k(xi,x,)],,; be the kernel
+matrix. Prove that
+
+(Son xi), 1 ha (x; )) =e =q!
+
+4. Solve Sheet 3.ipynb.
+
+
+--- Page 40 ---
+40
+
+Kernel SVM
+
+
+
+--- Page 41 ---
+Neural Networks
+
+41
+
+5 Neural Networks
+
+In the previous chapters, we saw the advantages of linear and kernel learn-
+ing methods. Kernel methods work well in separating non-linearly separable
+data, assuming we have a good feature map @. We will now turn to neural
+networks, whose main advantage is that they can also learn this feature map.
+As motivation, let us look at logistic regression in a high-dimensional space:
+
+min dw? +C S- In (1 + exp (—y; (w'¢ (x;) + b))) . (5.0.1)
+
+bER,weER*,¢ 2 _
+i
+
+To find this minimum, we also optimize over possible mappings ¢. The main
+problem is that there are too many mappings ¢ to consider. As motivation,
+we can first look at how our brain does this.
+
+5.1 The Brain Graph
+
+In simple terms, we can consider the brain to be a graph. We call a node
+neuron and an edge synapse. Another word for graph is network. As the
+nodes are called neurons, we call the brain graph a neural network. Let us, in
+
+neurons
+
+synapses
+ese
+
+Figure 5.1.1: Visualization of the brain graph.
+
+very simple terms, look at what the brain does when it sees something.
+1. Some neurons will light up (are activated).
+
+2. An activated neuron i will shoot an electrical signal v (spike) to neuron
+j with strength proportional to W;; (the weight of the synapse).
+
+3. If the in-going electrical signals of neuron j (called the potential of 7)
+exceed a threshold, it will also become activated and can thus shoot
+electrical signals v to its neighboring neurons. See Fig. 5.1.2.
+
+
+--- Page 42 ---
+42
+
+Neural Networks
+
+ReLU activa-
+tion function
+
+Figure 5.1.2: Illustration of the process explained above. The spike in v; of neuron
+j is dependent on the spikes vg, vj, v2 and the weights wo;, wij, w2;-
+
+McCulloch and Pitts model
+Denote by u the neuron’s potential and by v the emitted spike. Then:
+v=oa(u),
+
+where o is the sigmoid function: o(u) = Today’s artificial neural
+
+i
+lte-¥"*
+
+Sigmoid plot
+
+Figure 5.1.3: The sigmoid function fits the values u between 0 and 1.
+
+networks use the ReLU activation function instead of the sigmoid function
+o(u) := max(0, u).
+
+We will use the ReLU activation function in the following, but generally, it
+does not matter which type of activation function we use.
+
+5.2 Artifical Neural Networks (ANN)
+
+Let us formalize the propagation of neuron activation. Neuron 7 is connected
+with strength W;; to other neurons who emit spike v;. The potential is
+
+Uj = y Wig Vi;
+i
+
+and its activation
+
+vj =o(u;) =o (= vi ;
+
+
+--- Page 43 ---
+Neural Networks
+
+43
+
+404
+
+354
+3.04
+
+=max(0,u)
+
+atu)
+
+ReLU
+
+Figure 5.1.4: The ReLU activation function, which is commonly used in practice.
+
+Let W be the adjacency matrix of the neural network, u = (u1,...,Ua)!
+
+and v = o(u) be the activation of all neurons as a vector.
+
+transposing W, the potential can be calculated as
+
+and the activation as
+
+u=W'v
+
+v=o(u)=o(W'y).
+
+Notice that by
+
+Notice that our equation is dependent on v on the left and right side. To not
+allow a cyclic dependency, we restrict our neural network to being an acyclic
+
+graph.
+
+5.3 Feed-Forward ANN
+
+The acyclic construction from above is called feed-forward ANN or multi-layer
+
+perceptron.
+
+PS
+SAAN
+WKRA
+
+jy
+HES
+Vy
+
+hidden
+
+Figure 5.3.1: Example of a feed forward ANN. Have a look at https://
+playground.tensorflow.org/ to get a better understanding of ANN and play
+
+around with small networks.
+
+
+--- Page 44 ---
+44
+
+Neural Networks
+
+We use Fig. 5.3.1 to define some notions. Shown in Fig. 5.3.1, we have a feed-
+forward network with an input layer (1) of 5 nodes, two hidden layers (2,3) of
+8 and 6 nodes, and an output layer (4) with 1 node. Let vj be the vector of
+activation of neurons in the /-th layer and W, be the submatrix of the strengths
+of the connections between the / — 1-th and the /-th layer. Recall that
+
+v=o(u)=o(W'v).
+In a feed-forward network, we can calculate v4, by
+Vidi = o(W/\ vi).
+“HS
+Sul+1
+Let us use this observation. Let 0 and x := vg be our starting layer and L
+
+be the number of hidden layers sorted from left to right with C+ 1 being the
+output layer. We can calculate v; as:
+
+=v)
+
+and the potential of the nodes in the last layer as
+
+U1 = Wi bw(X).
+So the feature map we just created will have as output the potential uz41,
+which is a scalar if we have one output node. To wrap it all up, we will get
+the following optimization problem, which was motivated by (5.0.1):
+
+min lw? +5 3 Uline + 3 Woe (1 + exp (www ())) (6331)
+
+i=1
+
+where
+e W :=(W,,...,Wz),
+e w= Wri,
+© Willie = Doig Whigs
+e dw (xi) := 0 (Wa (...0(W,'x:)...)),
+
+which is just logistic regression with the feature map @y and the regularizer
+
+1 L
+2
+l=1
+
+which is a generalization of a vector norm to a matrix norm. Observe that
+the hyperplane bias parameter b is left out. We can do this as, if needed, the
+machine can put the bias inside the feature map dy.
+
+
+--- Page 45 ---
+Neural Networks 45
+
+5.4 Training ANN
+
+Now we turn to solving the optimization problem (5.3.1). Our approach will
+again be that of stochastic gradient descent. We first need to compute some
+gradients. For the sake of simplicity, let us call
+
+1
+F(w,W) = 5ilwll + 5 oI + OS (1 + exp (—y:w' dw (x:))) -
+i=l
+
+Let us first compute the gradient with respect to w. By linearity, we have:
+
+1 1 L n
+Vu Fw, IV) = Vw (Sllwl?) + Vw t > Wil +O Vw (log (1+ exp (—viw" dw (:))))-
+l=1 i=1
+
+[|S
+=Ww
+
+=0
+If we denote
+
+exp(x) 1
+T+exp(z) 1+ exp(—2)
+
+g(x) := log(1 + exp(x)) with g’(x) =
+
+and
+filw) = —yw" dw(xi) with Vwfi(w) = —yidw (xi),
+we get:
+Vw (log (1 + exp (—yiw ' dw (x:)))) = Vw (9(—yew ' ow (x:)))
+= Vw (g(filw))
+= Vg (filw)) Vfi (w)
+1
+
+~ 1+ exp(yiwl dw) Hew
+
+In conclusion, we get
+
+Yow (x;)
+Vwi'(w,W) = w— os 1+ exp (yw! bw (xi))
+
+Now we still need to find the gradient with respect to W = (Wi,...,Wz). Let
+us take the gradient with respect to each W;. Again by linearity, we have:
+
+L
+1 1
+Vu Plo) = Van (Fill?) + Yo ( 3 Wil
+Se eee
+
+=0 =W,
+
++ C >> Viv; (log (1+ exp (-y:w "dw (x:))))
+i=1
+yyw 'Vw,ow (x;)
+Wi-ey eS Giw bw 0c)
+
+We still need to calculate
+Vw.ow (xi) -
+
+
+--- Page 46 ---
+Neural Networks
+
+For a better overview, we calculate Vy.
+
+1
+
+nw (i) with Wi, being the 7, j-th
+entry of the matrix W; According to the definition of dy (x), we have:
+
+VwinOw(x) = Vwi, | Wilol...0(Wi _x_)...)
+
+=v)
+
+We apparently need the derivative of a nested function, for which we will use
+the chain rule, going up to u; for the matrix W;:
+
+Ovr, Ovr Our Ovr-1 . Ouj41 Ov) Ou,
+
+Vwist ow (x)
+
+~ wij! ~ Ou, , OvViL-1 , Ouyp_1 7 Ov, , Ou, , Owij
+So we need to calculate three derivatives:
+
+Ovi
+
+° Ou,
+
+Ou,
+Ovi-1
+
+Ou,
+Owsj1 .
+
+Let us first define the following auxiliary function
+
+0:R-R
+
+O(c) := " cs0
+
+1 otherwise ’
+
+where © of a vector is applied element-wise:
+
+OQ (x1)
+O(x) == :
+O (xq)
+
+Now, we go back to calculating the sought derivatives. For the activation
+function, we use the ReLU o(v) = max(0,u). We have:
+
+Ov; _ Oo(uj) — Omax (0, uy)
+
+=O .
+Ou, Ou, Ou, (uy)
+Moving on to the next derivative, we have:
+Ou, _ O (W,' vi-1) _ Wy".
+
+OVi-1 OVi-1
+
+Let us briefly recall the column-wise matrix multiplication
+
+Ax = A.j@1 + A.gtg+++>+ Ann,
+
+
+--- Page 47 ---
+AT
+
+Neural Networks
+
+where A.; stands for the i-th column in the matrix A. We will use this to
+calculate our final derivative. Noticing that transposition interchanges indices,
+
+we get:
+
+Oy — O(Wi vin) — O(Wi vie + Wo yvera + +++ + Wnt)
+OW 1 7 OW 1 7 OW 1
+
+Z O(W vis) | 0 (W.3v2u-1) a O(W2,Vni-1)
+
+OW x1 OW xi OW xi
+O(W vias)
+—0+0+4---4 iW LQ4+---+0
+= ViJ-1€;-
+
+We can now look back to the chain-rule formulation of Vw,,,6w (x). With our
+calculations so far, it translates to
+_ Ovr, Our Ovr-1 Ouy41 Ov) Ou,
+Ou, Ovz_-1 Oup_i Ov, Ow Ouy;jI
+= 0 (ur) W/ © (uz-1) +>» Wi), 9 (ur) vi-16).
+
+Vin PW (x)
+
+Notice that we need to compute each u, to use O(u;). We can achieve this
+
+with the following algorithm:
+
+Algorithm Forward Propagation
+
+1: Initialize vg = x
+
+2: for 1 << 1 to (L— 1) do
+3: u := Wi via
+
+4 v, ‘= 0 (uy)
+
+5: end for
+
+Now, we can finally compute our gradient Vw,,,¢w(x) for all i,7,/ with the
+following algorithm.
+The algorithm just calculates our chain-rule formulation.
+
+Algorithm Back Propagation
+
+1: Initialize 6; := O (uz)
+
+2: Vi,7 : VwijrPw(X) = O1V;i,1—-18;
+3: for 1 ~ (L—1) to 1 do
+
+4: 0, := 6141W 1,0 (uz)
+
+5 Vi,7 : V win Pw (X) = O1Vi-1€;
+6: end for
+
+5.5 Convolutional Neural Networks (CNN)
+
+CNN are a type of artificial neural network. They are mostly used in image
+and speech recognition. In the following, we will use the example of the pic-
+ture of an apple for image recognition. In image processing, it makes sense to
+
+
+--- Page 48 ---
+48
+
+Neural Networks
+
+process portions of an image (called patches). An apple could be anywhere in
+the image, and we need to make sure to identify it regardless of its position.
+To focus on ’interesting parts’ of the image (e.g., the apple stalk), we apply
+so-called filters. The high-level idea is to identify parts of an object and then
+use their position in relation to each other to determine whether the object is
+present. However, in practice, it is difficult to affirm whether CNN actually
+follow this basic idea.
+
+CNN incorporate spatial information and weight sharing. Weight sharing is
+the idea of having multiple weights being equal. To understand spatial in-
+formation, consider an image of an apple. Now randomly permute the pixels
+of this image. The apple will no longer be recognizable, even though the set
+of pixel values is still the same. In images, pixels close to each other have
+more interaction than pixels far appart, which is what we try to capture in
+a network. A convolutional filter is a filter based on convolutions. Examples
+include the Gaussian filter (blurring) and the Laplace filter (edge detection).
+You can think of the filters as being the weights of the edges in a neural net-
+work. The key point of CNN is to learn the convolutional filter that helps
+us recognize important parts of the image. Notice that a picture can have
+many pixels and thus a CNN can get quite large, so we need techniques to
+reduce their size. Pooling is a common choice to reduce a CNN’s size. Pooling
+shrinks many neighboring pixels into one. The typical pooling method is max
+pooling. However, other pooling methods are also used in specific settings. In
+the following, we will give two examples.
+
+e Maz Pooling: The newly formed pixel is the maximum of all pixel values
+in the patch.
+
+e Average Pooling: The newly formed pixel is the average of all pixel values
+in the patch.
+
+Figure 5.5.1: Examples of pooling: To the left, we see max pooling, to the right
+
+average pooling.
+
+5.6 CNN Architecture
+
+Next, we will explain how a CNN layer is set up. First we consider an input,
+which has a width, height, and depth. The depth is usually referred to as the
+channel dimension. For typical images, this dimension contains different color
+channels, such as RGB channels. We will denote width by w, height by h,
+and the channels by c. Then the input J is in R’*”*°. Now a CNN layer is
+made up of multiple filters, also called kernels. Let f be the number of such
+
+
+
+--- Page 49 ---
+Neural Networks
+
+49
+
+filters and let g be their size; i.e., one filter is of size g x g x c, typically only
+referred to as g x g. Each filter is applied using a stride, which we call s, and
+a padding, which we call p. Now to formalize what the CNN layer actually
+does, we define the size of the output of the layer and then specify how each
+component of the output can be computed. Afterwards, we will give insights
+into how the output can be interpreted. The spatial dimension of the output
+can be computed by the following equation:
+
+t—g+2p
+
+~— +1, (5.6.1)
+
+o(t, 9, p, 8) = |
+where 7 refers to the input size, and o refers to the output size. Now we
+can compute the output width ow = o(w,g,p,s) and the output height oh =
+o(h,g,p,s). Thus the output O is finally in R’*°’*f. We typically refer to
+both the input and the output as images, even though the output can typically
+
+not be visualized in the same way the input can. Finally, each component of
+the output can be computed as
+
+Oi =o » » » Tsi4t—p,si-m—pnW 6 1.g—myce—n ’ (5.6.2)
+
+le{1,...,.g} me{1,...,g} nE{1,...,c}
+
+where W* € R9*9*° are the weights of the k-th filter. Note that in this equa-
+tion, 7,7,k,l,m, and n are used as indices and do not refer to the variables
+
+defined above. However s,p, and g are the variables as defined above. The
+indices for W* might be confusing. This is due to the equation being a con-
+volution. They can also be thought of as Wh for simplicity’s sake. Now we
+can talk about the insights into what the CNN layer actually computes. Each
+channel of the output refers to an image of where the feature that is defined
+by the filter is observable. If, for example, the first filter is an edge detector,
+i.e., the Laplace filter, then the first slice of O, i.e., O...; would be a black and
+white image of all edges, or simply the Laplace filter applied to the original
+image. However, a slight complication has to be taken into account: A filter
+does not only have width and height but also depth. Thus, this Laplace filter
+analogy only works if we either consider only one color channel of the input, or
+if we consider an input with only one channel, since the Laplace filter is only
+defined in two dimensions, not three.
+
+One component of the output can be thought of as a neuron. As such, it
+is possible to think of a CNN layer as a modified NN layer. Let vec(/) be
+the vectorization of matrix M and W be the weight matrix of the layer, i.e.,
+Wvec(I) = vec(O). Since each component in one channel was produced using
+the same filter, these components share their weights. If vec(O); is in the same
+channel as vec(O);, then W;,. = W,.. This is weight sharing in mathematical
+terms: It is effectively a constraint in a typical NN. Also, W is quite sparse, as
+two input components in the same channel with a distance greater than g will
+never be present in the same sum of equation 5.6.2. One line in this matrix
+contains at most g?c (the weight parameters of the filter) non-zero values, while
+
+
+--- Page 50 ---
+50
+
+Neural Networks
+
+deep neural
+network
+
+its actual size is hwc >> g?c. A typical example of this would be the MNIST
+dataset, where one image has the size 28 x 28 x 1, whereas a filter typically
+has the size 3 x 3 or 5 x 5, 5? = 25 < 784 = 287. This is how the parameter
+count in a CNN is kept quite low.
+
+5.7 Deep Learning
+
+An ANN having 8 or more layers is called a deep neural network. Deep CNN are
+the state of the art in image classification. We now take a look at the AlexNet
+[10], a CNN that competed in the ImageNet Large Scale Visual Recognition
+Challenge on September 30, 2012. AlexNet was trained by GPUs as they are
+faster in matrix and vector operations.
+
+CONV
+
+Overlappin
+11x11, Overlapping CONV Max pee)
+stride = 4, Max POOL 5 x5, pad = 2, 3x3. stride =2
+
+96 filters 3x3, stride = 2 256 filters ,
+
+0
+(55 - 3) 27 (27 + 2°2-5) 27 (27 -3)
+
+(227-11) 55 /2+1=27 +1=27 12+1=13 13
+
+/4+1=55
+
+CONV CONV CONV Overlapping
+
+3x3, pad =1, 3x 3, pad = 1, 3x3, pad=1, Max POOL
+
+384 filters 384 filters 256 filters 3x3, stride = 2
+(13 + 2*1 -3) (13 + 2*1 - 3)
+
+14+1=13 1+1=13
+
+256 256 FC
+———_—_——> a — ———-
+384
+13 6
+13 [4 (13 + 21 -—3) 13 (13 - 3) 6 9216
+a aa ta 4096 4096 Softmax
+
+Figure 5.7.1: The AlexNet [10] consists of 8 layers. It used max pooling and the
+ReLu activation function. In the image, you can see the size of the patches, the
+number of filters used, and the size of the stride. Ultimately, we end up with fully
+connected layers leading us to the output.
+
+
+--- Page 51 ---
+Neural Networks
+
+51
+
+5.8 Exercises
+
+1. The following equation can be used to calculate the output size after a
+
+convolutional layer:
+
+i—k+2p
+s
+
+o=| +1),
+
+where 7 is the input size, o is the output size, k is the kernel size, p is the
+
+padding, and s is the stride.
+
+a)
+
+Put this equation into the context of convolutional neural networks
+by explaining the variables 7,0,k,p, and s in more detail than in
+this assingment.
+
+When talking about a convolutional layer, the quantities c, the num-
+ber of channels, and f the number of filters are usually also import-
+ant. However, they do not appear in the above formula. Why is
+that? What changes in a convolutional layer if you change c or f?
+
+Give one example of what the above formula could be used for, or
+why it is important.
+
+Consider the following. We want to change a convolutional layer to
+use not only one kernel size k, but two different sizes because we
+expect the spatial dimension of features to vary. What problems will
+occur, and how can they be resolved? In this assignment, consider
+two kernels like 3 x 3 and 5 x 5, not a non-square kernel like 3 x 5.
+
+2. Solve Sheet 4.ipynb.
+
+3. Solve Sheet 5.ipynb.
+
+
+--- Page 52 ---
+52
+
+Neural Networks
+
+
+
+--- Page 53 ---
+Overfitting & Regularization
+
+53
+
+6 Overfitting & Regularization
+
+6.1 Overfitting & Underfitting
+
+In the previous chapters, we learned about prediction functions but never
+talked about how well they describe our data. Our prediction function might
+be too simple, leading to inaccurate predictions. Then again, our prediction
+function might be too complex and adapt too strongly to the data. In ma-
+chine learning, we want to find a middle ground: The prediction function
+should neither be too complex nor too simple.
+
+underfitting just right overfitting
+x Oo O
+x
+x
+
+large width moderate width small width
+
+Figure 6.1.1: Various SVM prediction functions using various Gaussian kernel
+width. We see that the middle one with moderate width describes our data best.
+
+Definition 6.1.1 (Underfitting). Learning a classifier that is too simple (not
+
+complex enough to describe the training data well) is called underfitting.
+
+Definition 6.1.2 (Overfitting). Learning a classifier that is too complex and
+fits the training data too well (does not "generalize" to new data) is called
+overfitting.
+
+We can observe the underfitting and overfitting behavior in other learning
+machines as well. Let us consider the k-nearest neighbor algorithm:
+
+e If we choose k too small, we consider too few points to make generalized
+predictions, which leads to overfitting.
+
+e If we choose k too large, we include points that might be too far away
+to be locally useful, which leads to underfitting.
+
+Our high-level idea to avoid overfitting and underfitting is as follows:
+
+1. Choose a sufficiently complex classifier to avoid underfitting.
+
+underfitting
+
+overfitting
+
+
+--- Page 54 ---
+54
+
+Overfitting & Regularization
+
+2. Use a technique called regularization to avoid overfitting.
+
+6.2 Unifying Loss View
+
+We have already seen quite a few loss functions. Different learning machines
+try to minimize other loss functions. In the following, we would like to take
+amore abstract view of the learning machines we have studied so far (SVM,
+LR, ANN). Loss functions can also be viewed as an asset of a learning machine
+which we can change to obtain other learning machines. Let us take a look at
+the following optimization problem, which tries to unify all loss functions we
+have covered so far in one equation:
+
+min sll? + OS. (ys (ww, 6 ()) +0)
+
+[W, ?
+i=1
+
+L
+I 2
+=> il . (UE)
+
+The above general formulation lets us recover several learning problems intro-
+duced earlier in this course, as shown below:
+
+1. Let ¢(t) := max{0,1—t} and ¢ := id. By leaving out the bracketed
+values, we obtain our standard soft-margin SVM (3.3.9):
+
+_ 1) iy .
+min 5 ||w| + CS ~ max (0,1 — y; ((w, xi) +0)). (SVM)
+
+i=1
+2. Let &(t) := max{0,1—t} and @ := @,. By leaving out the bracketed
+values, we obtain our kernel SVM (4.2.5):
+
+min =|w|?+C S>max (0,1 — ys ((w, bx (%i)) +0).
+
+bER,wER4 2 ;
+i=1
+
+(Kernel SVM)
+
+3. Let @(t) := In((1 + exp(—t)) and @ := id. By leaving out the bracketed
+values, we obtain logistic regression (3.5.1):
+
+min s\iw|?+C >In (d + exp (—yi ((w, xi) + b))). (LR)
+
+beER,wER4 2 ;
+i=1
+
+4. Let €(t) := In((1 + exp(—t)) and @ := @¢,. By leaving out the bracketed
+values, we obtain kernelized logistic regression:
+
+min =|w|?+C S >In (1 + exp (—y: ((w, by (x:)) +8).
+
+beER,weER4 2 ;
+i=1
+
+(Kernel LR)
+
+5. Let @(t) := In((1 + exp(—t)), @ := @w, then taking into account the
+bracketed values, we obtain our ANN (5.3.1):
+
+L n
+1 1
+anin, Sliwl? + 590 [Willis + C >> In (1+ exp (—y: (w' dw (xi) +8)))
+~_ l=1 i=1
+
+(ANN)
+
+
+--- Page 55 ---
+Overfitting & Regularization
+
+55
+
+ma .
+a id Pk ow
+loss ¢
+hinge linear SVM_ kernel SVM 7
+logistic linear LR ~~ kernel LR ANN
+
+Table 6.1: The 5 big learning machines summarized in a table.
+
+We summarize the above results in Table 6.1. Note that the unifying equation
+(UE) contains, for every training example (x;, y;), a term
+
+E(yi(w, @(x)) + 4),
+
+which we call the loss of the i-th example.
+
+Loss function comparison
+
+—— Hinge Loss
+=~ Logistic Loss
+
+f(t)
+
+4 3 2 2 0 1 2 3 4
+Figure 6.2.1: Large t leads to lower ¢(t) values.
+
+We try to minimize:
+i=l
+
+which promotes large t; values. This is intuitive as t; > 0 means classifying
+the i-th example correctly. In theory, we are allowed to choose arbitrary loss
+functions. Let us have a look at the 0-1 loss function.
+
+Definition 6.2.1 (0-1 Loss). The function ¢(t) := sign(—t) is called 0-1 loss.
+Observation 6.2.2. We consider
+
+(ti) = —sign(yi ((w, @ (xi)) + 6).
+As discussed in Chapter 1, we have ¢(t;) = 1 when the label is misclassified
+(t; < 0) and ¢(t;) = 0 otherwise. Thus the cumulative 0 — 1 loss,
+
+’ Hinge loss is theoretically possible but uncommon in neural networks.
+
+0-1 loss
+
+
+--- Page 56 ---
+56
+
+Overfitting & Regularization
+
+Loss Function Comparison
+
+—— Hinge Loss
+—— 0-1 Loss
+
+a(t)
+nN
+
+-4 -3 -2 -l 0 1 2 3 4
+
+Figure 6.2.2: Hinge loss and 0-1 loss in comparison.
+
+measures the number of training errors. Unfortunately, optimizing over this
+discrete problem is NP-hard, so we need to consider convex alternatives such
+as hinge loss and logistic loss.
+
+6.3 Regularization
+
+Let us recall the unifiying equation with the parameters 0 := (b, w, |, W]) and
+with the bracketed terms only for ANNs:
+
+L n
+iain olwll +5 > (ml + | C dE (yi (Cw, 6 (%i)) + 0)
+l=1 regularization constant | #=1
+regularizer R() loss L(@)
+
+We want to discuss the influence of the regularization constant C’. Increasing
+the value of C means higher importance of the loss term L(@) and lower im-
+portance of the regularizer R(@). The regularizer R(@) imposes a penalty on
+the complexity of our chosen prediction function. Regularization is a general
+concept restricting the choice of parameters. We observe that:
+
+High regularization constant C = > low regularization = > high overfitting
+
+Low regularization constant C = > high regularization = > low overfitting.
+
+Theorem 6.3.1. Jf R(0) and L(@) are convex functions, then (under mild
+assumptions®)
+
+min R(@™) + C L(9),
+6 we “~~
+regularizer regularization constant jog.
+
+8 https: //en.wikipedia. org/wiki/Slater%27s_condition
+
+
+--- Page 57 ---
+Overfitting & Regularization 57
+
+is equivalent to
+ming L(6)
+st. R(O)<C
+
+for an appropriate choice of C.
+
+Proof. By the Lagrangian duality theorem (L) (strong duality)
+
+ming L(#)) (1) , .
+st. RO) < CG ~ maxmin (9) + MRA) — C)
+
+2) min max L(0) + \(R(@) — C)
+= min L(0) + X*(R(8) — C)
+
+Observe now that
+
+arg min, L(0)) ; ‘ x
+~ = L + —
+st. RIO) <C arg min (0) + A\*(R(O) — C)
+= argmin L(@) + \*R(8)
+9
+in 6 ! v* RO
+= argmin 514) + 5, (9)
+1
+= argmin R(™) + 7 (0)
+0 ~Y
+=C
+where A* denotes the optimal value for \ in the maximization problem. C]
+
+The proof is important because it tells us how to generate a regularizer from
+a hard constraint. In other words, the regularizer origin is a constraint. By
+changing C’, we can control the size of the set
+
+{0: R(0) < Ch.
+
+The larger the set, the more likely our learning machine will pick a function
+that describes our training data too well, so we risk overfitting of our prediction
+function.
+
+6.4 Regularization in Deep Learning
+
+Deep neural networks have a high risk of overfitting due to their complexity.
+We will discuss some special strategies to avoid overfitting in the setting of
+neural networks.
+
+Consider a large neural network involving many layers and neurons. Clearly, a
+large neural network can adapt to our training data much better than a small
+network, leading to the potential of overfitting. Below, we present several
+regularization techniques for neural networks.
+
+Strategy 1: Early Stopping
+
+
+--- Page 58 ---
+58
+
+Overfitting & Regularization
+
+e Split the training data into two sets:
+1. New smaller training set
+2. Validation set
+e Monitor the validation set errors every couple of mini-batch iterations.
+
+e Stop SGD when the validation error goes up.
+
+Error *
+
+Validation
+”
+
+~ +— > Training
+
+Stopping "Wumber
+Point
+
+Epochs
+
+Figure 6.4.1: Initially, as the number of iterations increases, the neural network
+describes our control data (validation set) better, so the validation error decreases.
+Once the network starts overfitting, the validation error will start increasing. This
+is our ideal stopping point.
+
+Strategy 2: Batch normalization
+
+Batch normalization is a strategy in which we attempt to normalize the input
+of the activation function. The gradient of an activation function is typically
+most informative when its input has mean 0 and variance 1. However, this is
+dependent on the activation function. Some examples:
+
+e ReLU: If its input is very large (very small), its gradient is 1 (0). As
+such, ReLU does not seem to be relevant unless its input is both large
+and small within a batch, in which case its mean will be around 0.
+
+e All sigmoidal functions (i.e., sigmoid, tanh, err) have vanishing gradients,
+i.e., for very small or very large input, their gradients are close to 0. As
+such, we want their input to have mean 0 and small variance.
+
+With this in mind, we can learn parameters allowing us to normalize the input
+of an activation function. Batch normalization first normalizes the input by
+learning the mean p and variance o and subtracting this learned mean from
+the input and dividing by the variance, normalizing the input to mean 0 and
+variance 1. It additionally allows learning the parameters y and {, which
+rescale and shift the normalized input. After batch normalization, the input
+to the activation can have any learned mean and variance.
+
+
+--- Page 59 ---
+Overfitting & Regularization
+
+59
+
+Algorithm Batch Normalization
+
+Denote, for a neuron f, its activation values on a mini-batch by f =
+(fi,..- fg). Then, for each mini-batch in the SGD optimization and every
+neuron in the ANN, do:
+
+1: Center each neuron activation: Vi=1,...,B: fi — fi — ps.
+
+2: Normalize the spread: f; <— f;/oy.
+
+3: Overwrite the neuron’s activation by the learned parameters (y, (6) with
+yf + B.
+
+Definition 6.4.1 (Ensemble Methods). Ensemble methods are methods that
+aggregate the prediction from multiple predictors.
+
+v
+Example 6.1. [Ensemble Method] A typical ensemble method would be:
+
+1. Train k machine learning algorithms, resulting in prediction functions
+
+fis. +3 Se
+
+2. Predict by majority vote: f(x) = +1if |i: fi(x) = +1) > |i: fi(x) = —-1
+and f(x) = —1 elsewise.
+
+The drawback to ensemble methods is that training multiple deep ANNs is
+very costly. We try to bypass this problem by using the following trick.
+
+A
+
+Strategy 3: Dropout Regularization
+
+We simulate many ANNs by randomly hiding some neurons from our original
+net in each SGD step. This process is formally called dropout regularization.
+Dropout regularization randomly hides (makes unusable) in each mini-batch
+SGD iteration a fixed percentage of randomly selected neurons of the network.
+The idea is that the network cannot focus on one feature, as this feature might
+not be present during optimization because it might be hidden. As such, the
+network learns more general representations for concepts.
+
+Strategy 4: Data Augmentation
+
+The optimal setting for optimization is online learning. In this setting, there
+is an infinite amount of data and in each optimization step, new, previously
+unseen data is used. Obviously, online learning is not very realistic, save for a
+very few problems. However, data augmentation creates "new training data"
+from old data. For example, an image of a cat could be mirrored, translated,
+noised, rescaled, zoomed in, zoomed out, etc. This leads to more informative
+training data. It promotes generalization, as we are adding variety to our
+training data.
+
+Strategy 5: Transfer Learning
+Assuming we have a small training dataset, we can do the following:
+
+ensemble meth-
+ods
+
+
+--- Page 60 ---
+Overfitting & Regularization
+
+1. Pre-training: Download an ANN from the web that was pre-trained on
+huge numbers of images, or alternatively train an ANN on some huge
+dataset.
+
+2. Fine-tuning: Run SGD optimization on our small dataset, but use the
+ANN from the previous step, effectively "fine-tuning" it to the small
+dataset.
+
+This regularization strategy is known as transfer learning, that is, transferring
+information from a related problem onto a learning problem.
+
+6.5 Exercises
+
+1. In this question, we investigate what influences models to overfit or un-
+derfit. Please list every ML model we have investigated so far in ML1.
+For each model, list what influences the model’s power, i.e., what would
+have to be changed in the model for it to potentially overfit, underfit,
+or fit well. Try to list each possible change for each model (most mod-
+els have methods to change their representative power without changing
+their regularization).
+
+2. Consider you are given an ML model together with hyperparameters for
+adjusting the model’s power, i.e., you have options to change whether the
+model overfits, underfits, or fits well. There might be an infinite number
+of possibilities for setting the hyperparameters, but you may assume that
+each hyperparameter can only be set to a rational number. You may also
+assume each hyperparameter influences the model’s power continuously.
+That is, if the hyperparameter increases, the power increases and vice
+versa. This exercise is not about finding the optimal procedure, which
+is an active research question. This exercise is about your approach and
+you will be graded on how good your approach is, given the information
+provided in the lecture.
+
+a) Describe a methodology for using these adjustments to determine
+the appropriate power for a given problem. Be exact with your
+methodology. Your methodology should set the hyperparameters
+somehow.
+
+b) Now consider your methodology as the entire training procedure,
+resulting in a model. Does your model have hyperparameters?
+
+c) When might your model overfit or underfit, i.e., how can you de-
+termine your model’s power?
+
+d) How do your model’s hyperparameters influence computation times?
+
+3. Solve Sheet 6.ipynb.
+
+
+--- Page 61 ---
+Regression 61
+
+7 Regression
+
+Until now, we have only looked at classification problems. For a prediction
+function f, we made the restriction that f(x) € {—1,+1}. However, real-
+world problems are not only of the classification kind. Suppose we are given
+data of houses as training data, and we want to predict the price of a house. A
+binary classifier does not suffice in this case. We need a real-valued prediction
+function.
+
+The formal setting will be the following:
+
+e Given training data (xi, (y;)), with x; € R4,y; € R.
+
+e Find f : R?— R with f(x) = y for new data x, y.
+
+In the following, we will look at a classical method for solving these kinds of
+problems, which is called regression.
+
+7.1 Linear Regression
+
+The idea of linear regression is quite simple. Suppose we are given some linear regres-
+data points. A first idea would be to approximate these values linearly by a sion
+hyperplane:
+
+y=w'x.
+
+For now, we will intentionally ignore the displacement parameter +b because
+it will turn out that we do not need it (more on this later). A line would be
+good if it reduced the error. One way to measure the error of data point 7
+would be the squared distance
+(Yi — w!x;)”.
+
+Observe that this is an intuitive choice of error because it is always positive
+and it is higher when the value predicted by the hyperplane is far away from
+y. Finally, we want to minimize the error for all data points, so we just sum
+over them, leading us to the following optimization problem:
+
+Definition 7.1.1 (Least-squares regression (Legendre, 1805)). least-squares
+n regression
+WLs := arg min )> (yi — w'x;)” = argmin lly — XTw||” .
+weR?t ja] weR?
+
+We will also define a loss function exhibiting our choice of error:
+
+Definition 7.1.2 (Least-squares loss). The function ¢(t, y) := (t—y)? is called
+least-squares loss. Our idea so far is promising but prone to overfitting because
+our model lacks regularization. To make our model less prone to overfitting,
+we add a regularizer, resulting in:
+
+
+--- Page 62 ---
+62
+
+Regression
+
+ridge regression
+
+yY = Wo + wix
+
+Cy NX
+
+a
+
+&
+
+S
+
+> Vertical offset
+
+2 Wry
+
+Cc
+
+[e)
+
++
+
+£ A
+
+ne y wi (slope)
+= Ay / Ax
+
+“NY.
+
+Wo (intercept)
+
+(x,y)
+
+~
+
+x (explanatory variable)
+
+Figure 7.1.1: Illustration of the linear regression problem in two dimensions. The
+hyperplane J = wo + wx will predict the y-value of a new input x. This hyperplane
+is chosen, as it minimizes the sum of the squared distances (vertical offsets).
+
+Definition 7.1.3 (Ridge regression).
+
+Wre '= arg min sil? +C lly — XTw|l.
+weR?¢
+
+ee
+=:L(w)
+
+Let us now look into how to find the optimum of the above regression problems.
+One possibility would be to use SGD, but it turns out that our problem is even
+simpler. Ridge regression is an unconstrained optimization problem. Thus, we
+find the global optima by differentiation. Let us calculate:
+
+Vu L(w) =Ve (Sill + Cy ~ XT)
+=. (Iwiw +0 (y—x"w)" (y—¥"w))
+=Vw (Sw +C(y'—w'X)(y- xTw))
+=Vw (Sw C(yly-y'X'w-—w' Xy+ wXXTw)
+=Vw (ww + Cyly —2Cw!Xy+ Cw" XxXTw)
+
+=w —2CXy + 2CXX'w.
+
+
+--- Page 63 ---
+Regression
+
+Finally, we set VwL(w) = 0 to find our optimum:
+
+Vwl(w)=0 =} w-2CXy+20XX'w=0
+= -2CXy + (1+ 2CXX')w =0
+<> (14+ 2CCXX')w = 2CXy
+=> w= (14+ 2CXX')120Xy
+= w= 2C(14+20XX') 1Xy
+
+1 —1
+es w=(-—14+ XX!) Xy.
+
+The above calculation proves the following theorem:
+Theorem 7.1.4.
+
+1 -1
+=(xx'+—lI) Xy.
+WRR ( 5G ) y
+
+We have considered a linear model without bias b. However, we can easily
+incorporate bias into any linear learning machine (regression, SVM, etc.) by
+applying the following trick: Let x1,...x, be our training data and define
+
+X= ’
+1
+
+and change our training data matrix into
+
+We can conclude that every solution:
+
+1 - 2
+w* :=arg min=||w||? + C ly — XTw|
+weR@t! 2
+
+= arg min ~ (||w|/? +0?) +C lly —X'w — b1||" '
+wER@,beR2
+
+Finally, observe the difference to ridge regression. Here we are also regularizing
+the bias b. If we wish to remove it, we just subtract it out of the minimization.
+
+7.2 Leave-one-out cross-validation (LOOCV)
+
+Let us think about how we can choose our regularization constant C’. One
+idea would be to separate our training data set into a smaller training data set
+and a test set. We would then measure the average error and choose our best
+regularization constant. To make things fair, we would also alternate through
+all possible test sets and training sets. Let us make this idea more formal in
+the following algorithm.
+
+
+--- Page 64 ---
+64 Regression
+Algorithm k-fold Cross- Validation
+1: split data into k “= 10 equally-sized chunks (called "folds")
+2: fori<-1tokandC € {0.01,0.1,1, 10,100} do
+3 use i-th fold as test set and union of all others as training set
+4: train learner on training set (using C’ ) and test on test set
+5: end for
+6: output learner with lowest average error
+
+root mean
+square error
+
+leave-one-
+out Cross-
+Validation
+
+k folds (all instances)
+: + + + : : : : Wie fold
+
+r
+n 3
+s
+
+: testing fold
+Vk | a
+
+Figure 7.2.1: Visualization of the k-fold Algorithm.
+
+Back in the classification setting, the meaning of error was pretty clear. Let
+us see how we can define the meaning of error in the regression setting.
+
+Definition 7.2.1 (Root Mean Square Error). Let {(x1,41),..-(Xn;Yn)} be
+a test set, and let f be a learned regression function. The root mean squared
+
+error (RMSE) of f is:
+
+n
+
+RMSE(f) := ! Sof (xi) — yi)”.
+
+n “
+i=l
+
+Sometimes our dataset is very small. In such a dataset, it would be intuitive
+to choose k = n.
+
+Definition 7.2.2 (Leave-One-Out Cross-Validation (LOOCV) ). The special
+case of k = n in k-fold Cross- Validation is called leave-one-out cross-validation.
+
+We can also use LOOCV for determining other parameters, like kernel width
+or learning rate in ANNs. Unfortunately, the runtime of LOOCV is relatively
+high.
+
+e In ridge regression, we loop over all data points with runtime O(n).
+
+e Each time we train with n—1 data points, which needs to invert a matrix
+with runtime O(d?).
+
+e Resulting in a total runtime of O(nd?*).
+
+
+--- Page 65 ---
+Regression
+
+65
+
+Turns out, we can be faster. Let us look at the particular setting of LOOCV.
+Recall:
+
+1
+wrer=( XX! tsqh)* xy
+= xix) ie XiVi
+
+Let w; be the RR solution when the i-th data point is left out during training.
+
+We have: ;
+1 _
+-—(X¥X!l_-xx!+—_] Xy —x-y;).
+
+The error in LOOCV is defined as:
+
+n
+
+RSME iooev = ~>> (x/ w; _— yi):
+
+i=1
+
+We will now see that we actually do not need to invert n times. We will make
+use of the following theorem:
+
+Theorem 7.2.3 (Sherman-Morrison Formula). Let A € R?%*¢ be an invertible
+matriz, and letu € R¢. Ifu' A~tuF 1, then:
+
+A uu! A7!
+1—ulA-tu
+
+(A — uu |) = A'4
+
+First, let us rewrite:
+
+-1
+1
+w,= |XX! H+ Yona (Xy — xy)
+
+=A
+
+By using the theorem, we get:
+
+1 n
+RSMEhooev = \ n d (x! w; _ yi)”
+
+1— A-lx-x? An ,
+DG ( is) ( y — Xiyi) w)
+
+This shows we only need O(d?) iterations to compute the LOOCV error. But
+we can further simplify the equation.
+
+Theorem 7.2.4. The LOOCV-RMSE of ridge regression can be computed in
+O (d?) by:
+
+1 (x) wer — Yi °
+RSME jooev = n S- (Sea ,
+
+i=1
+
+where A:= XX! + sal.
+
+
+--- Page 66 ---
+66 Regression
+
+Proof. Recalling war = A~'Xy and denoting 6; := x; A~x;, we get:
+
+n
+A-!x;x! A71
+
+2
+
+n
+
+l Bix) Wer 6? °
+=,/- x) Wer + —— - By, - My, — yy;
+Ese rat By ip 4
+
+_ “. (x] wer — a 1 ( x} wer yi \”
+—\n As 1— 6; #) Dee)
+
+7.3 Non-Linear Regression
+
+As one might imagine, a linear function is not always the best prediction
+function. We will now see how to employ non-linearity in regression.
+
+per capita crime rate by town
+
+y
+
+5 10. 15 20 2 30 35 40 45 50
+x = median value of building [in $1000]
+
+Figure 7.3.1: The red non-linear function approximates this dataset much better
+
+than any linear function would.
+
+But first let us try a quick fix, with which we could still use linear regression.
+Consider applying a log transformation on the label y = log(y). We take a
+look at a generalization of the above method.
+
+Box Cox trans- Definition 7.3.1 (Box Cox Transformation). The Boz-Cox transformation
+formation
+
+
+--- Page 67 ---
+Regression 67
+
+per capita crime rate by town
+ow
+co
+
+log(per capita crime rate by town)
+
+y=
+
+°5 10 15 20 25 30 35 40 45 50 5 10 15 20 25 30 35 40 45 50
+
+x = median value of building [in $1000] x = median value of building [in $1000]
+
+Figure 7.3.2: After the log transformation, a linear regression line is a reasonable
+approach.
+
+(or ‘power transformation’) with the parameter 4 is:
+
+log (Zola ) if \= 0
+
+new *— va, —1 .
+>a if \ 40
+
+The parameter \ has intuitive interpretations, as shown below:
+e \>1: data is stretched(e.g-\ = 2: quadratically ).
+e 0<A<1: data is concentrated (e.g. \ = 0.5: square root. )
+e \=0: log transform.
+
+e \ <0: analogously, with the order of data reversed.
+
+x_new
+
+05 110 15 2.0
+
+log(x_old)
+
+Figure 7.3.3: Visualization of the Box-Cox transformation. Here we see the para-
+
+meters A and their influence.
+
+In general, before using any other method, one would try out some trans-
+formations on the dataset. If this still does not help, we can use kernel ridge
+regression.
+
+
+--- Page 68 ---
+68 Regression
+
+kernel ridge Definition 7.3.2 (Kernel Ridge Regression). Let k be a kernel with an asso-
+regression ciated feature map @: R¢ > H, ice., k(x, x) = ((x), (X)). Then kernel ridge
+regression (KRR) is defined as:
+
+Wann = argmin-s|wl? +> I~ w, 6(2)) IP.
+
+i=1
+
+Let us try to apply the kernel trick on KRR. Recall the representer theorem
+statement: The optimal solution is in the span of the dataset:
+
+Ja eR": wrrr=>_ aid(x:) = o(X)a,
+
+i=1
+
+with
+
+Recalling the definition of the kernel matrix K, we have:
+
+_ 1
+rnin, lw? + lly — of)
+
+1
+=min5 (le X)all>  +Clly — oX)' 6X) all’
+ae —S—S eS
+aT (X)'6(X)a _
+=K
+
+1 +
+= min -alK Cly — Kall’.
+min 5a Ka + lly Q||
+
+By differentiation, we can also find the optimal solution, leading us to the
+following theorem:
+
+Theorem 7.3.3. The solution of KRR 1s given by
+
+= Dork (x;,x) with a= G + soln) y
+
+Proof. Left as an exercise.
+
+The solution can thus be computed in O (n?). Usually we use KRR together
+with a Gaussian kernel, but sometimes it can make sense to use a linear kernel.
+By definition, linear kernel regression is the same as ridge regression. If n < d,
+it makes sense to use a linear kernel instead of ridge regression, as the matrix
+we need to invert is of size n x n as seen above, and the matrix inversion is in
+O(n?) time instead of O(d*). We also use regression in deep learning, for tasks
+like determining the price of a house, given a picture. We only need to change
+the loss to least squares.
+
+deep regression Definition 7.3.4 (Deep Regression). Deep regression predicts f(x) = w dw, (x),
+where:
+
+: 1 2 2
+(we, W.) == argmin sw? + SIM, +O (Wer)
+
+
+--- Page 69 ---
+Regression 69
+
+7.4 Unifying View
+
+Recall our unifying equation:
+
+bain, sllw |? + CS. L(y ((w, 6 ()) +0)
+
+i=1
+
+L
+1
+| SDimatkef. eB
+l=1
+
+We would like to also add regression to this equation, making it even more
+general. In order to do so, we define a new notation for our loss function:
+
+I(t,y) = (t—y)? for regression
+we (yt) for classification
+
+We can now get all of our known loss functions by plugging in:
+e Use I(t, y) := max(0,1— yt) for SVM ( "hinge loss").
+e Use I(t, y) := In(1 + exp(—yt)) for LR and ANN ("logistic loss").
+e Use I(t, y) := (t — y)* for regression.
+
+Similarly, by plugging the following kernel function in each loss function from
+above into UE, we get:
+
+e ¢:= id for linear SVM, linear LR, and RR.
+e ¢:= od» for kernel SVM, kernel LR, and KRR.
+e ¢:= dw for ANN and DR.
+
+Definition 7.4.1 (Support Vector Regression (SVR)). Using a loss function support vector
+called € insensitive loss: regression
+
+we can define support vector regression, whose aim it is to find a line predicting
+f (xi), such that the predicted value does not deviate more than € to y;. This
+error is captured by the distance of the prediction line and y; as
+
+Wsvr = arg min5||w||° +C y max (0, |y; — (w, @ (x;))| — €).
+w i=1
+
+7.5 Exercises
+
+1. Consider the kernel ridge regression optimization problem. Let a* € R4
+
+be the vector that minimizes the loss function. Show that:
+1 -1
+
+2. In the lecture, we found a closed-form solution for linear ridge regression
+and afterwards incorporated b by simply changing the dataset slightly.
+
+
+--- Page 70 ---
+70
+
+Regression
+
+This means, however, that b is regularized during optimization. What
+would happen if we introduced 6 in a different way? Consider linear ridge
+regression with offset
+
+. 1
+min =
+
+2
+weR@,beR 2 Iw)? +c ly (xtw +b)] , (7.5.1)
+
+where Vi: b; =b. b simply copies b into each component. Alternatively,
+the norm could be written as a sum incorporating only }, as follows:
+
+; 1
+min =
+weR4,beR 2
+
+Il FOSS (ui = Pw +)" (7.5.2)
+
+(7.5.1) and (7.5.2) have the same closed-form solution. Find this solution.
+In doing so, choose the version from the above two that you prefer ((7.5.1)
+or (7.5.2)).
+
+3. Solve Sheet 7.ipynb.
+
+
+--- Page 71 ---
+Clustering
+
+8 Clustering
+
+So far, we have only looked at so-called supervised learning settings. In these
+scenarios, we are given
+
+Inputs: X),...,Xn € R?
+
+Labels: 1, ---; Yn
+
+c ‘ +1} for binary classification
+Yi
+
+R for regression
+
+Now we will take a look at what happens if no labels are given, i.e., if y1, ..., Yn
+are unknown. This setting is called unsupervised learning and we will start by
+looking at so-called clustering problems.
+
+8.1 Linear Clustering
+
+Definition 8.1.1 (Clustering). Clustering is the process of organizing objects
+into groups - called clusters - whose members are similar in some way, while
+objects in different clusters are non-similar.
+
+Figure 8.1.1: Two sets of points in R? that could be clustered.
+
+We are now looking for an algorithm that is capable of correctly clustering our
+inputs Xj, ...,X, in a way that allows us to make meaningful interpretations of
+the resulting clusters.
+
+v
+
+Example 8.1. In Fig. 8.1.1, the two axes could represent the weight and tail
+length of two types of mice (transformed such as to fit neatly into the plot),
+which we want to distinguish from each other. In that case, a good algorithm
+should yield the following clusters:
+
+clustering
+
+
+--- Page 72 ---
+72 Clustering
+
+Mice
+
+weight
+
+tail length
+
+Figure 8.1.2: Clustered mice.
+
+A
+In the above scenario, the clustering was easy to see, but since we do not know
+what the ground truth labels are, we cannot be sure that this is the optimal
+
+way to cluster our mice. Therefore, the results usually need to be inspected
+manually afterwards.
+
+Mice
+
+weight
+
+tail length
+
+Figure 8.1.3: What an even better clustering could look like.
+
+8.2 K-means
+
+Now we will look at arguably the most popular clustering algorithm.
+
+
+--- Page 73 ---
+Clustering 73
+
+Algorithm /K-means
+
+Input: k ¢ N and X = x),...,X, € R?
+1: function K-MEANS(k, X)
+
+2: Initialize cluster centers €1,...,Ck (e.g., randomly drawn inputs)
+3 repeat
+
+4: fori=1:ndo
+
+5 Label the input x; as belonging to the nearest cluster
+
+. 2
+y; = arg min ||x; — ¢;||".
+
+j=l,..k
+6: end for
+7: for j} =1: kdo
+8: Compute cluster center c; as the mean of all inputs of the j-th
+
+cluster,
+c; := mean({x; : y; = j}).
+
+9: end for
+10: until Clusters do not change between subsequent iterations.
+11: return Cluster centers €1, ..., Ck
+
+12: end function
+
+The k-means algorithm takes two inputs, k the number of clusters we want to
+
+create and a set of inputs X,,...,X» € IR, which is usually be passed in the form
+of a matrix X € R"*¢ where d is the number of features each input x; has
+
+(d = 2 in our mouse example). We then initialize the cluster centers C1, ..., Ck
+by randomly picking k of our input data points xy, ...x,. Afterwards, we repeat
+the procedure described in lines 4-9 until our clusters do not change anymore.
+In the following, we have applied the algorithm to our mouse example. The
+white crosses represent the centroids. The colored regions indicate to which
+cluster a new input x, would be assigned.
+
+Mice
+
+weight
+
+—2 -1 0 1 2 3
+tail length
+
+Figure 8.2.1: K-means clustering applied to our mouse example
+
+
+--- Page 74 ---
+74
+
+Clustering
+
+v
+
+Example 8.2. [Limitations] We will now see that k-means is limited to finding
+linear boundaries between classes. This means it will partition the feature
+space into polygons. This partition is also called a Voronoi diagram. The
+polygons consist of a centroid and all points of the space that are closer to this
+particular centroid than to any other.
+
+A
+
+Theorem 8.2.1. K-means finds piecewise linear cluster boundaries.
+
+Proof. We first look at case k = 2. Since we only have two clusters, we can
+partition our inputs xy,...,X, by assigning the label y; = —1 to every input
+that lies in cluster one and y; = 1 to every input that lies in cluster two.
+Therefore, we get the partition
+
+A:={a;:(%i,y) €D,y,=—-1} B= {x;: (vi,y) € Dyy, = +1}.
+
+From line 8 of the algorithm, we know that the centroids can be computed as
+
+c1=— * en = L*
+
+rEA xeEB
+
+Look back at 2.2 Linear Classifier, where we presented the nearest centroid
+classifier. Our formulation here is equivalent to it. What happened is that for
+k = 2 k-means outputs the centroids for an NCC, which we can then use to
+predict new points. This also means that the cluster boundaries have to be
+linear.
+
+If k > 2, we look at pairwise linear boundaries between clusters and use the fact
+that the intersection of linear boundaries creates polygons that are piece-wise
+
+linear.
+
+Figure 8.2.2: Voronoi diagram of our mouse example for k = 5 and k = 8.
+
+Next up, we will see how to deal with clustering tasks where the optimal
+decision boundary is not linear anymore.
+
+
+--- Page 75 ---
+Clustering
+
+75
+
+8.3 Non-Linear Clustering
+
+Figure 8.3.1: K-means cannot cluster this data effectively.
+
+Kernel k-means
+
+Just like the SVM, the k-means clustering algorithm can be kernelized. To do
+so, we have to change two parts of our algorithm. First of all, we will compute
+the norm ||x; — ¢;||” line 5 via a kernel function and then we will not compute
+the mean in line 8 explicitly but rather find an implicit representation for it.
+We will now see how this works in detail. Let ¢ : R4 + H be a kernel feature
+map for a kernel k : R4 x R¢ — R and
+
+lo:= {ie {1,...,n}:y; = 7} for all j =1,...,k.
+
+Then 1
+
+i€l;
+That is, we map all inputs xj,...,Xn to a higher-dimensional space via ¢ where
+they can be linearly separated and then apply k-means in that space. We can
+then completely express the norm ||@ (x;) — ¢; ||? in terms of kernel functions
+
+as
+Ilo (x1) — ell? = 16 CaF —2 (6 (:) 3) + [legll”, (8.3.1)
+=k(x;,x;)
+where
+
+2 1 1
+lle" = Ch de (x;), i S- ) =) (8.3.2)
+
+J! Ged; I! jel;
+1
+| Al i€l; ver;
+1
+J i,t’ El;
+
+Here we used the kernel property k(x,x) = (6(x), @(X)) and the properties
+of dot products in general to move the sum and rag out of the dot product.
+J
+
+
+--- Page 76 ---
+76
+
+Clustering
+
+Through an analogous calculation, we get
+
+ver;
+
+Therefore, (8.3.1) can be completely expressed in terms of kernel functions.
+
+= STi ( Xj, Xj) yy k (x;,xy) (8.3.5)
+
+Ilo (xi) — el? =k (i, xi) — val |
+j ver; ran iv’ EL;
+
+Since we usually cannot compute ¢(-) explicitly, we have to find a different
+way to assign c; in the next step, e.g., line 8.
+
+The trick we are applying is to assign points to a cluster C; directly (notice
+the capital non-bold letter). Since we showed above that we do not need to
+know the cluster center c;, we can just skip its calculation in line 8 altogether.
+What counts for the classification is not a point c; but rather the indices in J,,
+which then determine the value of the R.H.S of equation (8.3.4). We can say
+that J; is basically an approximation for c; that encodes the same information,
+meaning which points should be clustered together. In case of J;, this works
+by explicitly giving their indices and in case of c,;, by being able to calculate
+the distance from every input Xj, ...,X, and then choosing the centroid c; that
+is the nearest.
+
+Algorithm Kernel k-means
+
+Input: k € N and X = xy,...,Xn € R%, a kernel function h.
+
+1: function K-MEANS(k, X, h)
+
+2: Randomly assign every x; to one of the k clusters Cj, 7 = 1,...,k.
+
+3: repeat
+
+4: fori=1:ndo
+
+5 Label the input x; as belonging to the nearest cluster C;.
+
+. 2
+yi= “ min |]é (xi) — ¢}||
+J geen
+=argmin k(x;,x;) — = Sok ( (X;, Xi) > k (Xj, Xi)
+jah, ak Gl fy 7 iWel,
+
+6: end for
+
+7: until Clusters do not change between subsequent iterations.
+
+8: return Final clusters C,..., Ck.
+
+9: end function
+
+We can see that the only part that really changes in comparison to k-means
+is line 8, where we computed each cluster as the set of inputs x; whose label
+
+
+--- Page 77 ---
+Clustering
+
+77
+
+y; is 7. With this algorithm, we can indeed improve our results drastically in
+some cases. Take a look at Fig. 8.3.1 again and then at Fig. 8.3.2.
+
+Figure 8.3.2: Kernel k-means can improve clustering a lot.
+
+So far we had to choose the number of clusters k ourselves. In the next part,
+we will deal with an algorithm that somewhat automates this process.
+
+8.4 Hierarchical Clustering
+
+Hierarchical clustering is an approach that generates bigger clusters from smal-
+ler clusters, the hierarchy going from small to big. Bigger clusters are formed
+out of smaller clusters with the biggest possible cluster being the entire set
+of inputs {x;,...,X%n}, and the smallest possible clusters being the inputs x;
+themselves.
+
+Figure 8.4.1: Example of hierarchical clustering of a set.
+
+In Fig. 8.4.1, we see that the first clusters are assigned as C, = {1,2},C) =
+this corresponds to the leaves of the tree on the left side of Fig. 8.4.1.
+
+
+--- Page 78 ---
+Clustering
+
+Algorithm Hierarchical Clustering
+
+Input: X = xj,...,.Xn € R?.
+
+1: function HIERARCHICAL CLUSTERING(X)
+
+2: Assign each input x; to a cluster.
+
+3: repeat
+
+4: Link the two clusters with minimal distance.
+5: until Only one cluster is left.
+
+6: return Tree describing cluster hierarchy.
+
+7: end function
+
+The cursively written "assign" in line 2 and "minimal distance" in line 4
+merit further attention. For the assign step, we can define our own criteria
+for how big our initial clusters should be and by which criterion they should
+be assigned. We might be inclined to not just assign every point to its own
+cluster, since the whole point of clustering is to associate points with others.
+A simple approach would be to use k-means for some k to initialize our first
+clusters.
+
+v
+
+Example 8.3. As we can see in Fig. 8.4.1, it would have been possible to
+put point 5 and 6 into one cluster; however, they are rather far apart, so
+there might have been a limit on how far points can be from each other before
+becoming ineligible to be clustered together.
+
+A
+To calculate the minimal distance in line 4, there are three common options.
+Let S; C {x1,...,Xn} be the set of inputs contained in the j—th cluster.
+
+Simple linkage: d(i, 7) := — x?
+
+imple linkage: d(i, j) eg Ik — x||
+A linkage: d(i, 7) := — ||?
+verage linkage: d(?, 7) ean, I|x — X||
+
+max ||x — x|J”.
+x5, KES;
+
+Complete linkage: d(i, 7) :
+
+Notice that all these expressions can be kernelized again. Which linkage we
+choose depends on our application. If we wanted to prevent "large" distances
+between points of two clusters, we would choose complete linkage, for instance.
+
+
+--- Page 79 ---
+Clustering 79
+
+Simple Linkage Average Linkage
+
+Complete Linkage
+
+é
+
+Figure 8.4.2: Geometric intuition behind the linkage types.
+
+8.5 Exercises
+
+1. Recall the kK—nearest neighbor algorithm from Sheet 0.ipynb. Prove that
+k—nearest neighbor can be kernelized.
+
+2. Solve Sheet 8.ipynb
+
+
+--- Page 80 ---
+80
+
+Clustering
+
+
+
+--- Page 81 ---
+Dimensionality Reduction 81
+
+9 Dimensionality Reduction
+
+Definition 9.0.1 (Dimensionality Reduction). With dimensionality reduction, dimensionality
+
+we want to represent the data {x,,...,Xn} in a lower dimensional space R* reduction
+with k < d with as little loss of relevant information as possible.
+
+There are three main reasons why this is important: First of all, data can be
+visualized in two or three dimensions. Also, fewer dimensions mean less data
+to be stored and worked with, which is more resourceful and leads to faster
+computation. Finally, fewer dimensions decrease the risk of overfitting since
+this decreases the complexity of the data.
+
+9.1 Linear Dimensionality Reduction
+
+We are given X1,X2,...X, € R¢. We assume w.l.o.g that
+
+. lg
+
+This means that the data has been centered in a pre-processing step. We
+
+then have to find a k—dimensional subspace Uy = span (wi,...,W,) where
+
+W = (wi,.--,Wk) € R2** is an orthonormal basis, such that projected onto
+that space via the projection
+
+is as "close" to the original data as possible. As a measure for closeness, we
+use the average squared error and pick the subspace Uyw« with
+
+1 n
+W* =arege min -\~ x; —Il x;)||?.
+BM. Dy IPS Thaw Os)
+
+Next, we will compute Hz, (x;) explicitly. Recall that orthonormality means
+(w;,w,) = 0 for alli ¥ j and ||w,|| = 1. In the simplest case k = 1, we have
+Uw = span(w,). Then
+
+Toya (Xi) © arg min IIx — x; ||? = arg min IIx — x;||7.
+xe x€R4:3\ER with x=Aw1
+We then calculate the derivative of f(A) := ||Aw, — x,||’ and set it to zero:
+/ d T
+d d
+= py wi) (AW1) — 2 AW? Xi
+
+= 2\wi wi — 2wt x;
+
+
+--- Page 82 ---
+82
+
+Dimensionality Reduction
+
+Now, since wi w, = ||w;,||? = 1, we get A* = w/ x; as the optimal value. Thus,
+* * T
+Tony (Xi) = A*wy = wir* = wiw, Xj.
+
+In the general case k > 1, we have Uy := span (w ,...,w,) with w;  w; for
+all i A j and ||w,|| =--- = ||w,|| = 1. Hence:
+
+Tuy, (Xi) def arg min ||x — x; ||
+xUy
+
+= argmin ||x—.x,||.
+x€R4:JAER*
+
+with x=V=1 AGW
+
+2
+As for k = 1, we can then set the derivative of f(A) := | A;w; — x;|| to
+
+T
+j
+
+zero, which reveals the optimum Aj = w; x; for all 7 = 1,...,k. Therefore:
+
+k k k
+Tony (Xi) = S- AGWj = Sw); = So wyw) Xi =WW'x,.
+j=l j=l j=l
+Then the projected data can be written as:
+
+X := (Ty (x1),--., Tay (Xn)
+=Www'x.
+
+If we look at this with respect to the basis wy,...w,, the coordinates of the
+projection of point x; would clearly just be:
+
+Repeating this for each data point would lead to the following matrix:
+
+X := (%1,-..,¥n) = (W'x,...,W' xn) =W'X.
+
+Now that we know what the projection looks like, our PCA problem becomes
+
+the following optimization problem: to a find matrix W € R?** that solves
+
+n
+
+arg min S- ea — ww'x;||°
+WeER¢xk id
+
+s.t. w, lw; for alli #7 and ||wi|| =--- = ||/we|| = 1.
+
+Let us now look at how to solve this optimization problem. First recall that the
+projection is orthogonal. We will have the same situation as seen in Fig. 9.1.1.
+
+According to the Pythagorean theorem, we get that the following equality
+holds:
+|Tesye (a)||° + [lee — Ted: (26) ||” = [fecall?
+
+
+--- Page 83 ---
+Dimensionality Reduction 83
+
+Figure 9.1.1: An illustration of the data point xj, its orthogonal projection, and
+the origin 0.
+
+Observe the fact that minimizing |x; — Il, (x,)||” would lead to maximization
+of ||IIzy,, (x;)||°. So we can safely exchange this in our optimization problem.
+Furthermore, we have that
+
+So lite (i = Sox WW WWwl x,
+j=l
+
+i=1 _wk ep TD
+= j=1 Wi;
+
+k n
+_ S T S T
+j=l i=1
+k
+= y w} XX‘ wy.
+
+j=l
+
+These observations lead us to the following theorem:
+
+Theorem 9.1.1. The PCA optimization problem can be equivalently written
+as
+
+k
+
+W, := arg max w} XX'w;
+
+s.t. w,;Lw, for alli ¢j and ||wy|| =--- = |}w,|| =1
+
+Definition 9.1.2 (Scatter Matrix). The matrix S, := XX! is called the scatter matrix
+scatter matrix.
+
+Theorem 9.1.3. The optimal PCA solution W, = (wj,...,w7) is given by
+the k largest eigenvectors of the (centered) scatter matrix Sj.
+
+Proof. Left as an exercise.
+
+Theorem 9.1.3 gives us an algorithm to solve our PCA optimization problem.
+
+
+--- Page 84 ---
+84
+
+Dimensionality Reduction
+
+Algorithm PCA Linear Dimensionality Reduction
+
+Rdxn
+
+Input: parameter k, inputs X = (x,,...,Xn) €
+
+1: Compute sample mean ft := > Xj.
+
+2: Center each input: x; < x; — f and update X.
+
+3: Compute scatter matrix S,,:= XX'.
+
+4: Compute & largest eigenvalues of S,, with eigenvectors W =
+(Wi,.--,Wk)- _ ;
+
+5: return dim.-reduced data: X = W'X ¢€ R**" and X = WW!'X €
+RIX,
+
+9.2 Kernel PCA
+
+Linear dimensionality reduction will struggle on a few inputs because of its
+inherent linearity. As seen in previous chapters in similar situations, we can
+apply kernelization. First, we apply the general representer theorem, that
+is, for each basis vector w;* of W, = (wj,...,w;), there exist coefficients
+
+T .
+a= (ai;, Ley a*;) € R” so that we can write
+
+n
+wi = 2 a5j6 (i).
+i=1
+
+Let us denote ¢(X) := (¢(x1),...,¢(x1)) and @ = (aj,...,aj) then we get
+that
+
+Ww; = O(X)a5, (9.2.1)
+and the matrix in general can be written as a matrix multiplication more
+compactly as
+
+W, = o(X)a*.
+Finally, the data in the dimensionality-reduced basis will be
+
+X := W(X) = (d(X)a*)’ 6(X) = a" 6(X)'0(X) = aK.
+
+Let us use this insight to kernelize our PCA optimization problem. We have
+that w; = ¢(X)a; and thus:
+
+k k
+max, Sw) O(X)(X)" wy = max, Y Pay (X)"9(X)O(X) A(X) ay.
+€ j=l ae j=l en ee
+
+= max tr (a! Ka).
+aeRrxk
+We want the orthonormality constraints by:
+Vz: ||wz||=1,Vi4Aj:wilw;=0
+=> We: ((X)azz)" ((X)az) = 1, vi x js ((X)au)" ((X)ay) = 0
+<=} Vz:a! Ka, =1,Vi#j: a} Ka; =0
+<— al Ka=I.
+
+Ultimately, we get the following:
+
+
+--- Page 85 ---
+Dimensionality Reduction 85
+
+Theorem 9.2.1. The objective function for kernel PCA (kPCA) is
+
+arg max tr (a! K?a)
+acRrxk
+
+s.t. al Ka=TI.
+
+Definition 9.2.2 (Centered Kernel Matrix). The centered kernel matrix is centered kernel
+the kernel matrix computed on the data that has been centered in the feature matrix
+space.
+
+Theorem 9.2.3. The centered kernel matrit K can be computed from the
+(uncentered) kernel matrix Kk by:
+
+~ 11! 11!
+R=(1-2)«(-4),
+n n
+
+Theorem 9.2.4. The kPCA solution a, = (aj,...,aj) can be computed by
+the k largest eigenvectors of the (centered) kernel matrix K.
+
+Proof. Left as an exercise.
+
+Both of the last two theorems pave the way for the following algorithm to solve
+the kPCA optimization problem.
+
+Algorithm kPCA Kernelized Dimensionality Reduction
+
+Input: parameter k, kernel matrix kK € R"*”
+
+: Center the kernel matrix: kK < (7 — 4) K (7 — 4) .
+
+n
+
+1
+
+2: Compute k largest eigenvectors a = (ay1,...,a,) of K.
+3: Compute: X :=al K.
+
+4: return dim.-reduced data: X € R**”
+
+As in the case of kernelized regression, linear kernels are useful if d > n, as the
+matrix we are looking the eigenvectors for, is smaller.
+
+9.3 Autoencoders
+Dimensionality reduction can also be achieved by means of neural networks,
+leading us to the concept of autoencoders. Let
+
+fw : R¢ > R*
+
+be a neural network called encoder and
+
+gw 2 R* > RY,
+
+
+--- Page 86 ---
+86
+
+Dimensionality Reduction
+
+be a neural netword called decoder. An autoencoder is defined as
+
+min ) > ||x: — gw (fw (x).
+WW a1
+At first glance, this might not make sense: We are trying to minimize the
+loss between the original data point x; and the decoded encoded version of
+x;. This can easily be achieved by not changing the data point at all, but we
+will not allow this behavior. A simple way to prohibit this is to enforce some
+bottleneck on a layer of neurons in our neural network as depicted in Fig. 9.3.1.
+On a high level, if done right, the output layer will resemble the input layer as
+
+input output
+layer layer
+
+hidden
+layer
+
+Figure 9.3.1: [lustration of an autoencoder neural network.
+
+closely as possible but with missing details. In the subcase of linear encoders
+and decoders, the linear encoder will look like fw(x) := W'x and the linear
+decoder will look like gy,(x) := W'x. In the same fashion as in PCA, the data
+in our basis would be
+
+X := gw (fw(X)) € R™,
+and the data in the encoded basis would be
+X := fw(X) eR".
+For the optimal choice of W,W :=W', we have that
+
+X = fw(X) =WTX,
+
+and that
+
+A
+
+X = gy (fw(X)) = WWWX.
+
+Observation 9.3.1. The solution of the linear autoencoder corresponds to the
+same solution as PCA. One thing to keep in mind is that the autoencoder does
+not constrain W to be orthonormal. The real power of autoencoders comes
+from their non-linearity. For more on Moo = [ld have a look at (71. Ona
+final note: Observe that for /(t) := t and f(x) = = ||d(x) — ww! ¢(x I", we can
+fit dimensionality reduction into our known hin view
+ic
+pin Bll STC oxplend + [+5 9-1
+I=1
+
+[W.]b,w
+
+
+
+--- Page 87 ---
+Dimensionality Reduction
+
+87
+
+9.4
+
+3.
+
+Exercises
+. Prove Theorem 9.2.3.
+. Let X € R®*” be the data matrix, S, = (X — fi)(X — fi)" be the
+3. -4 0.63 0 —3 —4
+scatter matrix, and S, = 4.3 | 0 2.74 | i = | be its
+diagonalization.
+
+a) What is the first principal component of the data according to PCA?
+
+b) Project the point x = [ 2 -4 l' using PCA with k = 1 into
+the coordinate system with the basis made up of the first principal
+component.
+
+c) What happens to data points if we project them using PCA as in c
+) but with k = 2? Mlustrate this using a sketch.
+
+d) What could the process from c) be used for?
+
+e) Assume that the S,, above is not centered and we do not have access
+to the data points. Can we use the same trick we used to center the
+kernel matrix to center S,,? Explain your answer.
+
+Prove Theorem 9.2.4.
+
+
+--- Page 88 ---
+88
+
+Dimensionality Reduction
+
+
+
+--- Page 89 ---
+Decision Trees & Random Forests
+
+89
+
+10 Decision Trees & Random Forests
+
+In this chapter, we will consider tree-based learning, encompassing decision
+trees, bagging of decision trees, and random forests. Decision tree learning is
+one of the oldest non-linear machine learning methods. Bagging and random
+forests are methods for growing an ensemble of decision trees. The authors M.
+Fernandez-Delgado et al. [6] evaluated 179 classifiers from 17 families (such
+as neural networks, support vector machines, nearest-neighbors, and random
+forests), finding out that random forests and SVM with Gaussian kernel are
+the most likely the best classifiers. In practice, having a standard data set
+with some numerical features, random forests, or SVM with Gaussian kernels
+will likely be the best method for this data set. However, for example, in the
+case of image classification, where one needs a deep neural network, this result
+does not hold.
+
+In the following chapter, we only look at numerical datasets. Those are given
+
+by d-dimensional data points x € R@ each equipped with a label y € R in case
+
+of Regression problems or y € {—1,+1} in case of Classification problems.
+Given some training data, we construct our decision tree or random forest and
+want to predict labels for new data points.
+
+10.1 Decision Trees
+
+Definition 10.1.1 (Decision Trees). A decision tree is a decision support tool
+from operations research that uses a tree-like graph or model of decisions and
+their possible consequences.
+
+Parents
+Visiting
+
+Weather
+
+Cinema
+
+Sunny Windy
+
+Play tennis
+
+Rich / Poor
+
+Shopping
+
+Figure 10.1.1: An example of a decision tree for "what to do at a normal day".
+
+
+--- Page 90 ---
+90
+
+Decision Trees & Random Forests
+
+Figure 10.1.2: An example of a decision tree for predicting labels based on 2-
+dimensional data points x = (#1, x2) € R?.
+
+5.83
+
+2.52
+
+x1
+
+Figure 10.1.3: A visualisation of the induced decision regions of the decision tree
+in Figure 10.1.2.
+
+The Figure 10.1.1 shows a general example of such a decision-supporting tree.
+An example of such a tree in the case of Machine Learning can be found in
+
+Figure 10.1.2. Here we have 2-dimensional data points x = (21,%2)" € R?.
+
+For each given data point, we follow the tree down to a terminal node and
+take this label as the predicted label for x. The induced decision region of
+this decision tree is shown in Figure 10.1.3. We assign the appropriate label
+from point (21,22) to each given data point (21,22) in the figure. The first
+node ‘x, > 2.52’ splits according to the x,-coordinate at 2.52. For the left
+region, +1 is assigned; for the right region, the decision tree performs another
+check of node x2 > 5.83. Note that such a visualization can only be done for
+2-dimensional data.
+
+Concluding, we now know what a decision tree looks like and how to apply
+a given tree to new data points. In the following, we consider constructing a
+decision tree that predicts well on a given dataset.
+
+
+--- Page 91 ---
+Decision Trees & Random Forests 91
+
+Assume we have d-dimensional data points. The general procedure is: We
+construct a complete binary tree with depth d and 2¢ terminal nodes. After
+that, we delete some internal nodes that produce no substantial difference. So,
+firstly, we explain how to grow the tree and then how to reduce it again using
+pruning.
+
+For growing the tree, three question arises.
+1. For each internal node, which feature to take?
+2. For each internal node, which threshold to take?
+3. Which labels to use at the terminal nodes?
+
+In other words: For a d-dimensional dataset an internal node is of the structure
+x; > t. We have to specify which feature j € {1,...,d} (1. Question) and
+which threshold t (2. Question) we take. A terminal node has the structure
+y =I for a label J, which we must choose (3. Question).
+
+x]
+
+t
+
+Figure 10.1.4: The two regions R,(j,t) and Ro(j,t) for the internal node ‘x; > t’
+given by j and t.
+
+As Questions 1 and 2 correspond, we will answer them together.
+
+But first, some notation. As before, we consider the node ‘x; > t’ with 7 as the
+feature that we split upon, ¢t as the split threshold, and R,(j,t), Ro(j,t) C R?
+as the two induced regions under the internal node x; > t. They are defined
+as following: Ri(j,t) = {x € R¢ | x; < t} and Ro(j,t) = {x € R®| 2; > th.
+The two regions R, and Ry are induced by splitting the j-th feature using
+
+the threshold t, where R, corresponds to everything under the left-hand sub-
+tree and R2 to everything under the right-hand subtree as visualized in Figure
+10.1.4. We will now look at the regression case, followed by the classification
+case.
+
+
+--- Page 92 ---
+92
+
+Decision Trees & Random Forests
+
+For the regression case we have labels | € R and we choose the feature 7 and
+
+threshold ¢ by:
+
+2
+arg min S- min S- (y; —c)?
+je OF ic RAG)
+We choose j and t for each region R,(j,t) and R2(j,t), respectively, by finding
+an optimal value c such that the mean squared error of c and the labels y; of
+the points x; in Ri(j,t) and Ro(j,t), respectively, is minimal. One can show
+that the optimum c, here defined as Yj 4, is the mean label of the training
+points falling into the appropriate region R,(j,t) or Ro(j,t). Formalised this
+means, that for a region R(j,t) the optimal c is given by:
+
+Ce = mean ({yi : Xi © Re(J,t)}) =: ite
+
+In summary, we choose the feature 7 and threshold ¢ such that the average
+squared distance of labels of the points under a region to the mean label in
+that region is minimal.
+
+To assign a label at a terminal node (3. Question), we just take the mean label
+of points in the region under this terminal. If this terminal node is the left
+child of the internal node given by 7 and t, we take yj 41 for the label.
+
+For the Classification case, we have labels 1 € {—1,+1}, and we want the
+predicted labels to be in the same range. Therefore, taking the mean label of
+points no longer works, so we use a different strategy.
+
+Define
+— tt] x: © Re(Z,t) Ay = +1}
+
+Dik = Hi | xi € ReG OF
+
+the fraction of instances in region R;(j,t) that are labeled +1. Hence, 1 —pj4;,
+
+is the fraction of instances in that region that are labeled —1. Now we choose
+the feature 7 and threshold t by
+
+2
+
+argmin ) 9 (pie)
+Jt pet
+
+where g is the Gini impurity measure given by g(p) := 2p(1 — p), see also
+Figure 10.1.5. Observe that the minimum of g is attained for very small or
+large values of p. Therefore, j and t are chosen such that p;4% is very small or
+large but preferably far from 0.5. p = 0.5 would mean we have as many points
+with positive labels as those with negative ones. Our algorithm searches for
+as much disparity as possible.
+
+To assign a label at a terminal node (3. Question), we do a majority vote over
+
+the labels of the instances (that are the points x € R?@ in the training data)
+
+falling into the region under the terminal node. If, for example, in the region,
+there are two points with a positive label and one with a negative one, this
+terminal node gets the label +1.
+
+
+--- Page 93 ---
+Decision Trees & Random Forests
+
+93
+
+Gini impurity
+
+0.54
+
+0.44
+
+0.34
+
+0.27
+
+0.14
+
+0.04
+
+0.0 0.2 0.4 0.6 0.8 1.0
+
+Figure 10.1.5: The Gini impurity measure g(p) := 2p(1 — p).
+
+To reduce the tree size, we use pruning. Pruning is significant to remedy over-
+fitting. A large, fully grown tree with 27 terminal nodes is prone to overfit!
+
+Definition 10.1.2 (Pruning). Removing internal nodes that produce no sub-
+stantial decrease in prediction accuracy as measured on a hold-out data set.
+
+After training our tree on a training data set until it is fully grown, we start
+pruning it on another data set called the hold-out data set. Thereby, we suc-
+cessively remove nodes of the tree that do not decrease the prediction accuracy
+very much. For further information, one can read Hastie et al. [8] chapter 9,
+e.g., cost-complexity pruning. This chapter is based on chapters 9 and 15
+of this book.
+
+10.2 Random Forests
+
+One major problem of the decision trees is their high variance: Often, a small
+change in data can result in a very different series of splits. For example,
+consider a feature that we split very late. We get a completely different tree if
+we split this feature at the beginning. This variance is bad for reproducibility,
+but we can use this to gain an advantage. The technique bagging averages
+many trees to reduce this variance. That means we repeat our method, decision
+tree, several times, each on a slightly different data set. Then, we combine the
+different results. In detail, this means:
+
+1. We randomly draw each data set with replacement from the training
+data so that it has the same size as the original training set. (i-e., one
+data point could occur more than once)
+
+2. Grow a tree on each data set.
+
+3. In the regression case, we average the resulting prediction functions, and
+for the classification case, we perform a majority vote.
+
+
+--- Page 94 ---
+94
+
+Decision Trees & Random Forests
+
+The resulting ensemble of trees is called a forest. In principle, this trick can
+be applied to any arbitrary machine learning algorithm (e.g., SVM, KRR,
+neural network). However, in practice, it works best with (small) decision
+trees because of their very high variance.
+
+Definition 10.2.1 (Random Forests). Random forests are pretty much the
+same as bagging of decision trees except for one difference: When growing a
+tree of the forest, for each split of an internal node in the tree, we randomly
+select a subset of m < d many features and choose the optimal split feature 7
+only among those m features.
+
+So, for each internal node, we use a new random draw of m features, call the
+set of those features MM, and we determine the optimal split feature 7 only
+
+among those m features: instead of arg min we consider arg min.
+eM,t
+
+Typically, this subset of features is very small. If, for example, d = 1000,
+then a common choice for m is 40. Finally, we look at the spam data from
+[8] and compare the different methods in Figure 10.2.1 and see that random
+forests perform best with a lower testing error, already for less than 500 trees.
+Gradient Boosting, which performs best starting from 500 trees, is strongly
+related to random forests.
+
+Spam Data
+R =| = LM ai oe
+S —— Bagging
+= ~~ Random Forest
+Za | —— Gradient Boosting (5 Node)
+oO - | {—_______________
+3 |
+~ | ||
+9S |
+o |
+Oo |
+3 |
+roe ha iA -
+k: 3 ‘ \ a eal 2 lla lll eerie at
+3 | Al Ae
+Ole ri 1 ae i —
+Oo t i my Ang ll iL
+wo
+9 yl
+4
+
+3 Ww Ask Tl Mag
+°
+Tt
+2
+aa T ot a Pa Tv
+
+500 1000 1500 2000 2500
+
+Figure 10.2.1: Comparison of bagging, random forests, and gradient boosting per-
+formance on the Spam dataset. The x axis gives the number of trees, and the y axis
+gives the testing error. Random forests perform best for less than 500 trees; starting
+from 500 trees, gradient boosting performs best. Figure taken from Hastie et al. [8].
+
+
+--- Page 95 ---
+Bibliography
+
+95
+
+Bibliography
+
+[1]
+
+[2|
+
+[3|
+
+[4|
+
+[5|
+
+[6|
+
+[7|
+
+[3]
+
+[9|
+
+[10]
+
+[11]
+
+[12|
+
+[13]
+
+Léon Bottou, Frank E Curtis and Jorge Nocedal. ‘Optimization methods
+for large-scale machine learning’. In: Siam Review 60.2 (2018), pp. 223-—
+311.
+
+Stephen Boyd, Stephen P Boyd and Lieven Vandenberghe. Convex op-
+timization. Cambridge University Press, 2004.
+
+Leo Breiman. ‘Random forests’. In: Machine learning 45.1 (2001), pp. 5-
+32.
+
+Corinna Cortes and Vladimir Vapnik. ‘Support-vector networks’. In: Ma-
+chine learning 20.3 (1995), pp. 273-297.
+
+Nello Cristianini, John Shawe-Taylor et al. An introduction to support
+vector machines and other kernel-based learning methods. Cambridge
+University Press, 2000.
+
+Manuel Fernéndez-Delgado et al. ‘Do we need hundreds of classifiers
+to solve real world classification problems?’ In: The journal of machine
+learning research 15.1 (2014), pp. 3133-3181.
+
+Ian Goodfellow et al. Deep learning. Vol. 1. 2. MIT Press Cambridge,
+2016.
+
+Trevor Hastie, Robert Tibshirani and Jerome Friedman. The elements
+of statistical learning: data mining, inference, and prediction. Springer
+Science & Business Media, 2009.
+
+Anil K Jain, M Narasimha Murty and Patrick J Flynn. ‘Data clustering:
+a review’. In: ACM Computing Surveys (CSUR) 31.3 (1999), pp. 264—
+323.
+
+Alex Krizhevsky, Ilya Sutskever and Geoffrey E Hinton. ‘Imagenet classi-
+fication with deep convolutional neural networks’. In: Advances in neural
+information processing systems 25 (2012), pp. 1097-1105.
+
+Kaare Brandt Petersen, Michael Syskind Pedersen et al. ‘The matrix
+cookbook’. In: Technical University of Denmark 7.15 (2008), p. 510.
+
+Bernhard Schélkopf, Alexander J Smola, Francis Bach et al. Learning
+with kernels: support vector machines, regularization, optimization, and
+beyond. MIT Press, 2002.
+
+Alex J Smola and Bernhard Schélkopf. ‘A tutorial on support vector
+regression’. In: Statistics and Computing 14.3 (2004), pp. 199-222.
+
+
+--- Page 96 ---
+96
+
+Bibliography
+
+
+
+--- Page 97 ---
+Index
+
+97
+
+Index
+
+0-1 Loss, 55
+
+Artificial neural network, 42
+Autoencoders, 85
+Average linkage, 78
+
+Back Propagation, 47
+Bagging, 93
+
+Batch normalization, 58
+Box Cox Transformation, 66
+
+Centered kernel matrix, 85
+Classifier, 15
+
+Clustering, 71
+
+Complete linkage, 78
+
+Convex function, 23
+
+Convex Optimization Problem, 24
+Convolutional filter, 48
+Convolutional neural network, 47
+
+Data augmentation, 59
+Data matrix, 15
+
+Decision Tree, 89
+
+Deep regression, 68
+Dimensionality reduction, 81
+
+Eigenvalues, 10
+Ensemble methods, 59
+
+Feed-forward ANN, 43
+Forward Propagation, 47
+
+Gaussian RBF kernel, 35
+
+General Representer Theorem, 38
+Gini impurity , 92
+
+Gradient, 12
+
+Gradient Descent, 28
+
+Hard-margin SVM, 19
+Hessian Matrix, 12
+Hierarchical clustering, 77
+Hinge function, 29
+Hyperplane, 9
+
+K-means, 72
+
+Kernel, 34
+
+Kernel k-means, 75
+Kernel PCA, 84
+
+Kernel ridge regression, 68
+Kernel trick, 34
+
+Least-squares regression, 61
+Leave-one-out cross-validation, 63
+Linear Classifier, 16
+
+Linear kernel, 35
+
+Linear PCA, 84
+
+Logistic function, 30
+
+Logistic Regression, 30
+
+Nearest centroid classifier, 16
+
+Overfitting, 53
+
+PCA, 82
+
+Polynomial kernel, 35
+Pooling, 48
+
+Prediction function, 15
+Pruning, 93
+
+Random Forests, 94
+Regularization, 56
+Ridge regression, 62
+
+Scalar Projection, 8
+
+Scatter matrix, 83
+
+Sigmoid function, 42
+
+Signed Distance, 10
+
+Simple linkage, 78
+
+Soft-margin SVM, 20
+Stochastic Gradient Descent, 30
+Support vector, 20
+
+Support vector regression, 69
+
+Training, 15
+
+Underfitting, 53
