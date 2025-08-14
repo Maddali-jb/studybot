@@ -188,10 +188,6 @@ See `requirements.txt` for the complete list of Python dependencies.
 4. Push to the branch: `git push origin feature-name`
 5. Submit a Pull Request
 
-## 📜 License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
 ## 🙏 Acknowledgments
 
 - [Groq](https://groq.com/) for fast LLM inference
